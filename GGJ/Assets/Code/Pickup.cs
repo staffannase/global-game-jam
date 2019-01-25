@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
+
 public class Pickup : MonoBehaviour {
 
     public enum state
@@ -18,10 +20,12 @@ public class Pickup : MonoBehaviour {
     public int Acceleration { get; set; }
                                        // Use this for initialization
     void Start () {
-         player = GameObject.FindGameObjectWithTag("player");
+         player = GameObject.FindGameObjectWithTag("Player");
         hand = GameObject.FindGameObjectWithTag("hand");
         _state = state.free;
         Acceleration = 0;
+        Collider c = gameObject.GetComponent<Collider>();
+        c.isTrigger = true;
     }
 	
 	// Update is called once per frame
@@ -62,7 +66,7 @@ public class Pickup : MonoBehaviour {
      private void OnTriggerEnter(Collider other)
     {
        
-        if (other.gameObject.CompareTag("player") && _state == state.free)
+        if (other.gameObject.CompareTag("Player") && _state == state.free)
         {
             _state = state.pickingup;
             var rb = GetComponent<Rigidbody>();
