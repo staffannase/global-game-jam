@@ -11,5 +11,5 @@ public class FruitSpawner : MonoBehaviour {
     {
         Vector3 spawnPos = points[Random.Range(0, points.Length)].position;
         var fruit = Instantiate(fruitPrefab, spawnPos, Quaternion.identity);
-    }
+     }
 }
