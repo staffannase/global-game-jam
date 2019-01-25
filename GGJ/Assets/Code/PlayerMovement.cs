@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour {
     bool right = false;
 
     //Animation Variables
+    Animator anim;
 
     //DEBUG VARS
     bool showStats = false;
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().mass = 60f;
+        anim = GetComponent<Animator>();
     }
 
     // Use this for initialization
@@ -60,8 +62,8 @@ public class PlayerMovement : MonoBehaviour {
 
         //Debugfuncs
         //DebugDrawRays();
-        DebugInput();
-        DebugPrintVars();
+        //DebugInput();
+        //DebugPrintVars();
     }
 
     #region Input Queue Handler Region
@@ -259,6 +261,15 @@ public class PlayerMovement : MonoBehaviour {
         horizontalMovement = Input.GetAxis( "Horizontal" );
         verticalMovement = Input.GetAxis( "Vertical" );
 
+        anim.SetFloat( "Move", Mathf.Abs( verticalMovement ) + Mathf.Abs( horizontalMovement ) );
+
+
+        if (horizontalMovement  < 0) {
+            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = true;
+        } else if ( horizontalMovement > 0 ) {
+            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = false;
+        }
+
         if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
             jumpCount = numberOfJumps;
             isGrounded = true;
@@ -299,8 +310,7 @@ public class PlayerMovement : MonoBehaviour {
     void FixedMovement() {
         //Movement
         Vector3 targetVelocity = new Vector3( horizontalMovement, 0, verticalMovement );
-        targetVelocity = transform.TransformDirection( targetVelocity );
-        targetVelocity.Normalize();
+        targetVelocity = transform.TransformDirection( targetVelocity );        
         targetVelocity *= movementSpeed;
         Vector3 velocity = GetComponent<Rigidbody>().velocity;
         Vector3 velocityChange = ( targetVelocity - velocity );
@@ -351,7 +361,7 @@ public class PlayerMovement : MonoBehaviour {
         Debug.Log( "maxVelocityChange: " + maxVelocityChange.ToString() );*/
 
         //Debug.Log( "numberOfJumps: " + numberOfJumps.ToString() );
-        Debug.Log( "jumpCount: " + jumpCount.ToString() );
+        //Debug.Log( "jumpCount: " + jumpCount.ToString() );
         //Debug.Log( "jumpHeight: " + jumpHeight.ToString() );
 
         //Debug.Log( "isGrounded: " + isGrounded.ToString() );
