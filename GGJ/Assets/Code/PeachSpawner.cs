@@ -10,7 +10,7 @@ public class PeachSpawner : MonoBehaviour {
     GameObject Fruit;
     // Use this for initialization
     void Start () {
-        SpawnTimer = Time.fixedTime + 10;
+        SpawnTimer = Time.fixedTime + 10 + (Random.value-0.5f) * 3;
         Growing = false;
         Fruit = null;
 	}
@@ -24,17 +24,17 @@ public class PeachSpawner : MonoBehaviour {
             Fruit = Instantiate(Peach, gameObject.transform.position, Quaternion.identity);
             Growing = true;
         }
-        if (Growing && Fruit.transform.localScale.sqrMagnitude < Vector3.one.sqrMagnitude * 1)
+        if (Growing && Fruit!=null &&Fruit.transform.localScale.sqrMagnitude < Vector3.one.sqrMagnitude * 1)
         {
             Fruit.transform.localScale += Vector3.one * Time.deltaTime * (float)0.2;
-            if (Fruit.transform.localScale.sqrMagnitude >= Vector3.one.sqrMagnitude * 1)
+            if (Fruit.transform.localScale.sqrMagnitude >= Vector3.one.sqrMagnitude * 3)
                 Growing = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Fruit")
+        if (other.gameObject.tag == "Peach")
         {
             SpawnTimer = Time.fixedTime + 10;
         }

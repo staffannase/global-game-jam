@@ -12,6 +12,9 @@ TagManager:
   - fruit
   - player
   - hand
+  - Undefined
+  - Grape
+  - Peach
   layers:
   - Default
   - TransparentFX
