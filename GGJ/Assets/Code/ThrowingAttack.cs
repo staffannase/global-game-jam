@@ -18,11 +18,16 @@ public class ThrowingAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && splitCount > 0)
         {
-            doExplosion();
-            for (int i = 0; i < splitCount; i++)
-            {
-                initSubProjectile(i - splitCount / 2);
-            }
+            splitItem();
+        }
+    }
+
+    private void splitItem()
+    {
+        doExplosion();
+        for (int i = 0; i < splitCount; i++)
+        {
+            initSubProjectile(i - splitCount / 2);
             Destroy(gameObject);
         }
     }
@@ -38,6 +43,7 @@ public class ThrowingAttack : MonoBehaviour
         start += transform.forward.normalized * 10;
 
         GameObject newProjectile = Instantiate(subProjectile, transform.position, transform.rotation);
+        Destroy(newProjectile, 5f);
         Vector3 newVelocity = new Vector3(
             body.velocity.x + xShatter,
             body.velocity.y + Random.Range(1f, 2f),
@@ -55,6 +61,6 @@ public class ThrowingAttack : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        // TODO - Stop animation on velocity stop
+        splitItem();
     }
 }
