@@ -7,7 +7,7 @@ public class PlayerAttackThrow : MonoBehaviour
     public Transform ThrowingPoint;
     public GameObject projectile;
     private GameObject currentProjectile;
-    private bool ongoingAnimation = false;
+    private bool canAttack = true;
 
     // Use this for initialization
     void Start()
@@ -19,9 +19,9 @@ public class PlayerAttackThrow : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1") && !ongoingAnimation && currentProjectile == null)
+        if (Input.GetButtonDown("Fire1") && canAttack)
         {
-            ongoingAnimation = true;
+            canAttack = false;
             GetComponent<PlayerMovement>().slowPlayerTemporarily();
             GetComponent<Animator>().SetTrigger("Fire1");
             StartCoroutine("delayedAttack");
@@ -32,12 +32,13 @@ public class PlayerAttackThrow : MonoBehaviour
     IEnumerator delayedAttack()
     {
         yield return new WaitForSeconds(0.4f);
-        ongoingAnimation = false;
         currentProjectile = Instantiate(projectile, ThrowingPoint.position, Quaternion.identity);
         var throwingAttack = currentProjectile.GetComponent<ThrowingAttack>();
         Vector3 aimVector = FindObjectOfType<CameraOrbit>().transform.position - Camera.main.transform.position;
         Vector3 aimingModifier = new Vector3(0, 3, 0);
-        throwingAttack.perform(1000, aimVector + aimingModifier, 5);
-        
+        throwingAttack.perform(1000, aimVector + aimingModifier, 0);
+        yield return new WaitForSeconds(1.3f);
+        canAttack = true;
+
     }
 }
