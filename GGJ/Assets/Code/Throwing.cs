@@ -15,7 +15,7 @@ public class Throwing : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetButtonDown("Fire2") && splitCount > 0)
+        if (Input.GetButtonDown("Fire1") && splitCount > 0)
         {
             doExplosion();
             for (int i = 0; i < splitCount; i++)
