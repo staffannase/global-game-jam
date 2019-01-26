@@ -35,8 +35,8 @@ public class CameraOrbit : MonoBehaviour {
 
     void LateUpdate() {
         if ( target ) {
-            x += Input.GetAxis( "HorizontalPan" ) * xSpeed * 0.02f;
-            y -= Input.GetAxis( "VerticalPan" ) * ySpeed * 0.02f;
+            x += Input.GetAxis("Mouse X") + Input.GetAxis( "HorizontalPan" ) * xSpeed * 0.02f;
+            y -= Input.GetAxis( "Mouse Y" ) + Input.GetAxis( "VerticalPan" ) * ySpeed * 0.02f;
 
             y = ClampAngle( y, yMinLimit, yMaxLimit );
             x = ClampAngle( x, xMinLimit, xMaxLimit );
