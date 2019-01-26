@@ -13,6 +13,11 @@ public class ThrowingAttack : MonoBehaviour
 
     private int DEFAULT_FRAGMENT_COUNT = 30;
 
+    private void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
+
     public void Update()
     {
         if (Input.GetButtonDown("Fire1") && splitCount > 0)

@@ -22,9 +22,13 @@ public class PlayerAttackThrow : MonoBehaviour
         {
             GetComponent<PlayerMovement>().slowPlayerTemporarily();
             GetComponent<Animator>().SetTrigger("Fire1");
+
             currentProjectile = Instantiate(projectile, ThrowingPoint.position, Quaternion.identity);
             var throwingAttack = currentProjectile.GetComponent<ThrowingAttack>();
-            throwingAttack.perform(1550, new Vector3(-0.25f, 1, -1), 10, 5);
+
+            Vector3 aimVector = FindObjectOfType<CameraOrbit>().transform.position - Camera.main.transform.position;
+            Vector3 aimingModifier = new Vector3(0, 3, 0);
+            throwingAttack.perform(1000, aimVector + aimingModifier, 5, 5);
         }
 
     }
