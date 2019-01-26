@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour {
     void Start() {
         //Physics.IgnoreLayerCollision( 8, 11 );
         jumpCount = numberOfJumps;
+        anim.SetBool( "TurnedRight", true );
     }
 
     #endregion
@@ -261,15 +262,6 @@ public class PlayerMovement : MonoBehaviour {
         horizontalMovement = Input.GetAxis( "Horizontal" );
         verticalMovement = Input.GetAxis( "Vertical" );
 
-        anim.SetFloat( "Move", Mathf.Abs( verticalMovement ) + Mathf.Abs( horizontalMovement ) );
-
-
-        if (horizontalMovement  < 0) {
-            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = true;
-        } else if ( horizontalMovement > 0 ) {
-            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = false;
-        }
-
         if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
             jumpCount = numberOfJumps;
             isGrounded = true;
@@ -281,12 +273,20 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
-        //Turn
-        /*if(horizontalMovement > 0.2f){
-			transform.GetChild(0).localEulerAngles = new Vector3(0,0,0);
-		}else if(horizontalMovement < -0.2f){
-			transform.GetChild(0).localEulerAngles = new Vector3(0,180,0);
-		}*/
+        if ( !anim.GetBool( "TurnedLeft" ) && horizontalMovement < -0.1 ) {
+            anim.SetBool( "TurnedLeft", true );
+            anim.SetBool( "TurnedRight", false );
+            anim.SetTrigger( "RightToLeftTurn" );
+        } else if ( !anim.GetBool( "TurnedRight" ) && horizontalMovement > 0.1 ) {
+            anim.SetBool( "TurnedRight", true );
+            anim.SetBool( "TurnedLeft", false );
+            anim.SetTrigger( "LeftToRightTurn" );
+        }
+
+        if (isGrounded) {
+            anim.SetFloat( "Move", Mathf.Abs( verticalMovement ) + Mathf.Abs( horizontalMovement ) );
+        }
+
 
         //Jump
         if ( Input.GetButtonDown( "Jump" ) && jumpCount > 0 ) {
@@ -296,6 +296,11 @@ public class PlayerMovement : MonoBehaviour {
             isJumping = true;
             GetComponent<Rigidbody>().velocity = new Vector3( GetComponent<Rigidbody>().velocity.x, Mathf.Sqrt( 2 * jumpHeight * -Physics.gravity.y ), GetComponent<Rigidbody>().velocity.z );
         }
+    }
+
+    public void SetTurnsFalse() {
+        //anim.SetBool( "TurnLeft", false );
+        //anim.SetBool( "TurnRight", false );
     }
 
     #endregion
