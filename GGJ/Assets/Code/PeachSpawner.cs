@@ -22,13 +22,12 @@ public class PeachSpawner : MonoBehaviour {
         {
             SpawnTimer = float.MaxValue;
             Fruit = Instantiate(Peach, gameObject.transform.position, Quaternion.identity);
-            Fruit.transform.position = gameObject.transform.position;
             Growing = true;
         }
-        if (Growing && Fruit.transform.localScale.sqrMagnitude < Vector3.one.sqrMagnitude * 0.01)
+        if (Growing && Fruit.transform.localScale.sqrMagnitude < Vector3.one.sqrMagnitude * 1)
         {
-            Fruit.transform.localScale += Vector3.one * Time.deltaTime * (float)0.05;
-            if (Fruit.transform.localScale.sqrMagnitude >= Vector3.one.sqrMagnitude * 0.05)
+            Fruit.transform.localScale += Vector3.one * Time.deltaTime * (float)0.2;
+            if (Fruit.transform.localScale.sqrMagnitude >= Vector3.one.sqrMagnitude * 1)
                 Growing = false;
         }
     }

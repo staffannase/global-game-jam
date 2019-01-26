@@ -40,9 +40,9 @@ public class Pickup : MonoBehaviour
         if (State == state.pickingup)
         {
             //transform.position += Vector3.forward * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, Hand.transform.position, Time.deltaTime * Acceleration * (float)0.01);
+            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Time.deltaTime * Acceleration * (float)0.1);
             Acceleration += 1;
-            if (Vector3.Distance(transform.position, Hand.transform.position) < 0.001)
+            if (Vector3.Distance(transform.position, Player.transform.position) < 0.001)
             {
                 State = state.taken;
                 Acceleration = 0;
