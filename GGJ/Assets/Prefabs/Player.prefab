@@ -528,7 +528,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThrowingPoint: {fileID: 4212954468206352}
-  projectile: {fileID: 1526245473310934, guid: ccdbe24a240a19d459bb9424c14a10f0, type: 2}
+  peach: {fileID: 1526245473310934, guid: ccdbe24a240a19d459bb9424c14a10f0, type: 2}
+  grape: {fileID: 1116462841595452, guid: 803f4e735f7d6894db8a99a0a6a98b0b, type: 2}
+  grapeFragment: {fileID: 1047589090619736, guid: 3994217a97b79f94fbcea8cad24e18d2,
+    type: 2}
 --- !u!114 &114670131802700810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -555,7 +558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeTrigger: {fileID: 4040993864803968}
   volumeLayer:
-    serializedVersion: 2
     m_Bits: 1
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 1
@@ -565,6 +567,9 @@ MonoBehaviour:
     sharpness: 0.25
     stationaryBlending: 0.95
     motionBlending: 0.85
+    <jitter>k__BackingField: {x: 0, y: 0}
+    m_ResetHistory: 1
+    <sampleIndex>k__BackingField: 0
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
@@ -573,21 +578,36 @@ MonoBehaviour:
   fog:
     enabled: 1
     excludeSkybox: 1
+  dithering:
+    m_NoiseTextureIndex: 0
   debugLayer:
     lightMeter:
+      <output>k__BackingField: {fileID: 0}
+      requested: 0
       width: 512
       height: 256
       showCurves: 1
     histogram:
+      <output>k__BackingField: {fileID: 0}
+      requested: 0
       width: 512
       height: 256
       channel: 3
     waveform:
+      <output>k__BackingField: {fileID: 0}
+      requested: 0
       exposure: 0.12
       height: 256
     vectorscope:
+      <output>k__BackingField: {fileID: 0}
+      requested: 0
       size: 256
       exposure: 0.12
+    frameWidth: 0
+    frameHeight: 0
+    <debugOverlayTarget>k__BackingField: {fileID: 0}
+    <debugOverlayActive>k__BackingField: 0
+    <debugOverlay>k__BackingField: 0
     overlaySettings:
       linearDepth: 0
       motionColorIntensity: 4
@@ -601,6 +621,11 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+  <haveBundlesBeenInited>k__BackingField: 0
+  m_Camera: {fileID: 0}
+  m_SettingsUpdateNeeded: 1
+  m_IsRenderingInSceneView: 0
+  m_NaNKilled: 0
 --- !u!114 &114832158513638936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,6 +642,10 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+  m_PreviousLayer: 0
+  m_PreviousPriority: 0
+  m_TempColliders: []
+  m_InternalProfile: {fileID: 0}
 --- !u!114 &114899750615331674
 MonoBehaviour:
   m_ObjectHideFlags: 1
