@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: WaterGround
+  m_Name: WaterGround 1
   m_Shader: {fileID: 4800000, guid: e7e85ac45d06bba48b3f9c38ef023f7b, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7fcf40529df2320439b16b2e2037f499, type: 3}
+        m_Texture: {fileID: 2800000, guid: 509cf6e9aab664748ac0289d67a8578f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
