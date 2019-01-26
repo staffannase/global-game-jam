@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 54183135759224526}
   - component: {fileID: 114929747422377842}
   - component: {fileID: 135796238294286552}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: ProjectileGrape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4528263341981822}
   - component: {fileID: 212802310770499740}
   - component: {fileID: 95830327716887036}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: GrapeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
