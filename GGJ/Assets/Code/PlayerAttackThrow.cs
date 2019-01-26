@@ -22,7 +22,7 @@ public class PlayerAttackThrow : MonoBehaviour
         {
             currentProjectile = Instantiate(projectile, ThrowingPoint.position, Quaternion.identity);
             var throwingAttack = currentProjectile.GetComponent<ThrowingAttack>();
-            throwingAttack.perform(1550, new Vector3(0, 1, -1), 10, 5);
+            throwingAttack.perform(1550, new Vector3(-0.25f, 1, -1), 10, 5);
         }
 
     }
