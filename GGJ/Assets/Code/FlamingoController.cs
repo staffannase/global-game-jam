@@ -17,14 +17,18 @@ public class FlamingoController : MonoBehaviour {
     private int indexOfPatroling = 0;
 
     private Transform currentTarget;
+    private Animator animator;
 
     private float minDistance = 0.5f;
 
     private float nextAttackTime;
     private float timeBetweenAttack = 2f;
 
-    void Start () {
+    void Start ()
+    {
+        animator = GetComponent<Animator>();
         currentTarget = pointsToPatrol[indexOfPatroling];
+        animator.SetBool ("Move", true);
     }
 
     void Update () {
@@ -36,6 +40,7 @@ public class FlamingoController : MonoBehaviour {
                 break;
             case StateOfEnemy.Chase:
                 if (IsDistanceToTargetIfEnough ()) {
+                    animator.SetBool ("Move", false);
                     TryToAttack ();
                 } else {
                     RotateTowardTarget ();
@@ -44,6 +49,7 @@ public class FlamingoController : MonoBehaviour {
                 }
                 break;
             case StateOfEnemy.Idle:
+                animator.SetBool("Move", false);
                 break;
             default:
                 break;
@@ -66,6 +72,7 @@ public class FlamingoController : MonoBehaviour {
         state = StateOfEnemy.Chase;
         currentTarget = target;
         transform.LookAt (currentTarget);
+        animator.SetBool ("Move", true);
     }
 
     void Patrol () {
@@ -73,6 +80,7 @@ public class FlamingoController : MonoBehaviour {
         transform.LookAt (currentTarget);
         state = StateOfEnemy.Patrol;
         indexOfPatroling = 0;
+        animator.SetBool ("Move", true);
     }
 
     void MoveTowardsCurrentTarget () {
@@ -99,6 +107,7 @@ public class FlamingoController : MonoBehaviour {
     void TryToAttack () {
         if (nextAttackTime <= Time.time) {
             //Debug.Log ("Attack");
+            animator.SetTrigger("Attack");
             currentTarget.SendMessage("GetDamage");
             nextAttackTime = Time.time + timeBetweenAttack;
         }
