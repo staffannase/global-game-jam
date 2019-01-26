@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class HealthComponent : MonoBehaviour
 {
+    [SerializeField]
+    private UnityEvent deadEvent;
+
     [SerializeField]
     private UnityEvent damageEvent;
 
@@ -26,6 +28,6 @@ public class HealthComponent : MonoBehaviour
     {
         IsDead = hp == 0;
         if(IsDead)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            deadEvent.Invoke();
     }
 }
