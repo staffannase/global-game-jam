@@ -23,7 +23,7 @@ public class PlayerAttackThrow : MonoBehaviour
         {
             canAttack = false;
             GetComponent<PlayerMovement>().slowPlayerTemporarily();
-            GetComponentInChildren<Animator>().SetTrigger("Fire1");
+            GetComponent<Animator>().SetTrigger("Fire1");
             StartCoroutine("delayedAttack");
         }
 
