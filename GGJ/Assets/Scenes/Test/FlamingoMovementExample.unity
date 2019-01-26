@@ -590,6 +590,26 @@ Prefab:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114575037281210026, guid: 58e389c52694836448e4dce2c6e7e264,
+        type: 2}
+      propertyPath: pointsToPatrol.Array.data[0]
+      value: 
+      objectReference: {fileID: 2136689184}
+    - target: {fileID: 114575037281210026, guid: 58e389c52694836448e4dce2c6e7e264,
+        type: 2}
+      propertyPath: pointsToPatrol.Array.data[1]
+      value: 
+      objectReference: {fileID: 1141339075}
+    - target: {fileID: 114575037281210026, guid: 58e389c52694836448e4dce2c6e7e264,
+        type: 2}
+      propertyPath: pointsToPatrol.Array.data[2]
+      value: 
+      objectReference: {fileID: 917697789}
+    - target: {fileID: 114575037281210026, guid: 58e389c52694836448e4dce2c6e7e264,
+        type: 2}
+      propertyPath: pointsToPatrol.Array.data[3]
+      value: 
+      objectReference: {fileID: 1205038735}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58e389c52694836448e4dce2c6e7e264, type: 2}
   m_IsPrefabParent: 0
