@@ -5,17 +5,13 @@ using UnityEngine;
 public class ThrowingAttack : MonoBehaviour
 {
     public GameObject subProjectile;
-    public GameObject fragment;
     public GameObject explosion;
     private Rigidbody body;
-    private int fragmentCount;
     private int splitCount;
-
-    private int DEFAULT_FRAGMENT_COUNT = 30;
 
     private void Start()
     {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 4f);
     }
 
     public void Update()
@@ -50,27 +46,15 @@ public class ThrowingAttack : MonoBehaviour
         newProjectile.GetComponent<Rigidbody>().velocity = newVelocity;
     }
 
-    public void perform(int speed, Vector3 direction, int fragmentCount, int splitCount)
+    public void perform(int speed, Vector3 direction, int splitCount)
     {
-        this.fragmentCount = fragmentCount;
         this.splitCount = splitCount;
         body = GetComponent<Rigidbody>();
         body.AddForce(direction * Time.deltaTime * speed);
     }
 
-    public void throwStick(int speed, Vector3 direction)
-    {
-        this.perform(speed, direction, DEFAULT_FRAGMENT_COUNT, 0);
-
-    }
-
     public void OnCollisionEnter(Collision other)
     {
-
-        for (int i = 0; i < fragmentCount; i++)
-        {
-            Instantiate(fragment, transform.position, Quaternion.identity);
-        }
-        Destroy(gameObject);
+        // TODO - Stop animation on velocity stop
     }
 }

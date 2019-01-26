@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 95593397374649238}
   - component: {fileID: 114215081464921742}
   - component: {fileID: 114546270914886868}
-  - component: {fileID: 114432006787585578}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -175,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1947664395563824}
   m_LocalRotation: {x: -0, y: -0.9919153, z: -0, w: 0.1269018}
-  m_LocalPosition: {x: -6.93, y: -1.598, z: -23.97}
+  m_LocalPosition: {x: -5.24, y: 5.1, z: -17.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4934980883566296}
@@ -313,19 +312,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   hp: 3
---- !u!114 &114432006787585578
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1947664395563824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2938605ffaaed42ada8a56859e7c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThrowingPoint: {fileID: 4212954468206352}
-  projectile: {fileID: 1526245473310934, guid: 7281d125997cfc141af2efacc36f4f61, type: 2}
 --- !u!114 &114436828892236466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThrowingPoint: {fileID: 4212954468206352}
-  projectile: {fileID: 1526245473310934, guid: 7281d125997cfc141af2efacc36f4f61, type: 2}
+  projectile: {fileID: 1526245473310934, guid: ccdbe24a240a19d459bb9424c14a10f0, type: 2}
 --- !u!114 &114899750615331674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,7 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2299e3eab0dd61c41877beac0310755f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
   numberOfJumps: 2
   jumpHeight: 2.2
   maxVelocityChange: 5
