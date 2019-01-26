@@ -23,11 +23,7 @@ public class PlayerAttackThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-        bool isAirborne = !state.IsName("JumpStart") && !state.IsName("Jump") && !state.IsName("JumpEnd");
-
-        if (Input.GetButtonDown("Fire1") && canAttack && isAirborne && inventory.canAttack())
+        if (Input.GetButtonDown("Fire1") && canAttack && !GetComponent<Animator>().GetBool("IsJumping") ) 
         {
             canAttack = false;
             movement.slowPlayerTemporarily();

@@ -315,12 +315,19 @@ public class PlayerMovement : MonoBehaviour {
             isJumping = true;
             anim.SetBool( "IsJumping", true );
             anim.SetBool( "IsGrounded", false );
+            if(jumpCount > 0 && jumpCount < numberOfJumps) {
+                anim.SetBool( "IsAirJump", true );
+            }
             GetComponent<Rigidbody>().velocity = new Vector3( GetComponent<Rigidbody>().velocity.x, Mathf.Sqrt( 2 * jumpHeight * -Physics.gravity.y ), GetComponent<Rigidbody>().velocity.z );
         }
     }
 
     public void ResetJumpAnimation (){
         anim.SetBool( "IsJumping", false );
+    }
+
+    public void ResetAirJumpAnimation() {
+        anim.SetBool( "IsAirJump", false );
     }
 
     #endregion
