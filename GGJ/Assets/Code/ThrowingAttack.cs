@@ -20,7 +20,7 @@ public class ThrowingAttack : MonoBehaviour
             doExplosion();
             for (int i = 0; i < splitCount; i++)
             {
-                initSubProjectile(i-splitCount/2);
+                initSubProjectile(i - splitCount / 2);
             }
             Destroy(gameObject);
         }
@@ -35,12 +35,12 @@ public class ThrowingAttack : MonoBehaviour
     {
         Vector3 start = transform.position;
         start += transform.forward.normalized * 10;
-        
+
         GameObject newProjectile = Instantiate(subProjectile, transform.position, transform.rotation);
         Vector3 newVelocity = new Vector3(
-            body.velocity.x + Random.Range(-1.5f, -0.50f),
+            body.velocity.x + xShatter,
             body.velocity.y + Random.Range(1f, 2f),
-            body.velocity.z + xShatter
+            body.velocity.z + Random.Range(-1.5f, -0.50f)
             );
         newProjectile.GetComponent<Rigidbody>().velocity = newVelocity;
     }
