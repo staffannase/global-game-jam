@@ -300,11 +300,6 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    public void SetTurnsFalse() {
-        //anim.SetBool( "TurnLeft", false );
-        //anim.SetBool( "TurnRight", false );
-    }
-
     #endregion
 
     #region FixedUpdate Region
@@ -317,13 +312,14 @@ public class PlayerMovement : MonoBehaviour {
     void FixedMovement() {
         //Movement
         Vector3 targetVelocity = new Vector3( horizontalMovement, 0, verticalMovement );
-        targetVelocity = transform.TransformDirection( targetVelocity );        
+        //targetVelocity = transform.TransformDirection( targetVelocity );        
         targetVelocity *= movementSpeed;
         Vector3 velocity = GetComponent<Rigidbody>().velocity;
         Vector3 velocityChange = ( targetVelocity - velocity );
         velocityChange.x = Mathf.Clamp( velocityChange.x, -maxVelocityChange, maxVelocityChange );
         velocityChange.y = 0;
         velocityChange.z = Mathf.Clamp( velocityChange.z, -maxVelocityChange, maxVelocityChange );
+        velocityChange = transform.TransformDirection( targetVelocity );
         GetComponent<Rigidbody>().AddForce( velocityChange, ForceMode.VelocityChange );
         //Add gravity
         GetComponent<Rigidbody>().AddForce( new Vector3( 0, Physics.gravity.y * GetComponent<Rigidbody>().mass, 0 ) );
