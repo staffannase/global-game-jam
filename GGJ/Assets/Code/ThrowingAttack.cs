@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class ThrowingAttack : MonoBehaviour
 {
-    public GameObject subProjectile;
-    public GameObject fragment;
     public GameObject explosion;
+    private GameObject subItem;
     private Rigidbody body;
-    private int fragmentCount;
     private int splitCount;
 
-    private int DEFAULT_FRAGMENT_COUNT = 30;
+    private void Start()
+    {
+        Destroy(gameObject, 4f);
+    }
 
     public void Update()
     {
         if (Input.GetButtonDown("Fire1") && splitCount > 0)
         {
-            doExplosion();
-            for (int i = 0; i < splitCount; i++)
-            {
-                initSubProjectile(i - splitCount / 2);
-            }
+            splitItem();
+        }
+    }
+
+    private void splitItem()
+    {
+        doExplosion();
+        for (int i = 0; i < splitCount; i++)
+        {
+            initSubProjectile(i - splitCount / 2);
             Destroy(gameObject);
         }
     }
@@ -36,7 +42,8 @@ public class ThrowingAttack : MonoBehaviour
         Vector3 start = transform.position;
         start += transform.forward.normalized * 10;
 
-        GameObject newProjectile = Instantiate(subProjectile, transform.position, transform.rotation);
+        GameObject newProjectile = Instantiate(subItem, transform.position, transform.rotation);
+        Destroy(newProjectile, 5f);
         Vector3 newVelocity = new Vector3(
             body.velocity.x + xShatter,
             body.velocity.y + Random.Range(1f, 2f),
@@ -45,27 +52,21 @@ public class ThrowingAttack : MonoBehaviour
         newProjectile.GetComponent<Rigidbody>().velocity = newVelocity;
     }
 
-    public void perform(int speed, Vector3 direction, int fragmentCount, int splitCount)
+    public void perform(int speed, Vector3 direction)
     {
-        this.fragmentCount = fragmentCount;
+        this.perform(speed, direction, 0, null);
+    }
+
+    public void perform(int speed, Vector3 direction, int splitCount, GameObject subItem)
+    {
         this.splitCount = splitCount;
+        this.subItem = subItem;
         body = GetComponent<Rigidbody>();
         body.AddForce(direction * Time.deltaTime * speed);
     }
 
-    public void throwStick(int speed, Vector3 direction)
-    {
-        this.perform(speed, direction, DEFAULT_FRAGMENT_COUNT, 0);
-
-    }
-
     public void OnCollisionEnter(Collision other)
     {
-
-        for (int i = 0; i < fragmentCount; i++)
-        {
-            Instantiate(fragment, transform.position, Quaternion.identity);
-        }
-        Destroy(gameObject);
+        splitItem();
     }
 }

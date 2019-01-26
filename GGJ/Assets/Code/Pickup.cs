@@ -40,9 +40,10 @@ public class Pickup : MonoBehaviour
         if (State == state.pickingup)
         {
             //transform.position += Vector3.forward * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, Hand.transform.position, Time.deltaTime * Acceleration * (float)0.01);
+            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Time.deltaTime * Acceleration * (float)0.1);
+            GetComponentInChildren<Animator>().enabled = true;
             Acceleration += 1;
-            if (Vector3.Distance(transform.position, Hand.transform.position) < 0.001)
+            if (Vector3.Distance(transform.position, Player.transform.position) < 0.001)
             {
                 State = state.taken;
                 Acceleration = 0;
@@ -50,9 +51,11 @@ public class Pickup : MonoBehaviour
         }
         if (State == state.taken)
         {
-            transform.localScale += Vector3.one * Time.deltaTime * Acceleration * (float)0.01;
+            transform.localScale += Vector3.one * Time.deltaTime * Acceleration * (float)0.5;
             Acceleration += 2;
-            if (transform.localScale.sqrMagnitude > (Vector3.one * 0.3f).sqrMagnitude)
+
+            GetComponentInChildren<Animator>().speed*=2;
+            if (transform.localScale.sqrMagnitude > (Vector3.one * 2.0f).sqrMagnitude)
             {
                 State = state.pickedup;
             }

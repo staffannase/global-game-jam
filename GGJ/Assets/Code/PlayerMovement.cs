@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     //Movement Variables
     float horizontalMovement = 0f;
     float verticalMovement = 0f;
-    public float movementSpeed = 5f;
+    private const float ORIGINAL_MOVEMENT_SPEED = 5f;
+    private float movementSpeed = ORIGINAL_MOVEMENT_SPEED;
     public int numberOfJumps = 2;
     int jumpCount = 2;
     bool isJumping = false;
@@ -258,6 +259,21 @@ public class PlayerMovement : MonoBehaviour {
 
     private int direction = 1;
 
+    // Temporary throwing speed decrease
+    public void slowPlayerTemporarily()
+    {
+        StartCoroutine("slowPlayerTemporarilyCoRoutine");
+    }
+
+    private IEnumerator slowPlayerTemporarilyCoRoutine()
+    {
+        movementSpeed = 2f;
+        yield return new WaitForSeconds(1f);
+        movementSpeed = ORIGINAL_MOVEMENT_SPEED;
+
+        
+    }
+
     //Handle movement input
     void Movement() {
         RaycastHit rayHit;
@@ -267,9 +283,11 @@ public class PlayerMovement : MonoBehaviour {
          if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
             jumpCount = numberOfJumps;
             isGrounded = true;
+            anim.SetBool( "IsGrounded", isGrounded );
         } else {
             isGrounded = false;
-            if( isJumping ) {
+            anim.SetBool( "IsGrounded", isGrounded );
+            if ( isJumping ) {
                 jumpCount--;
                 isJumping = false;
             }
@@ -289,15 +307,20 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetFloat( "Move", Mathf.Abs( verticalMovement ) + Mathf.Abs( horizontalMovement ) );
         }
 
-
         //Jump
-        if ( Input.GetButtonDown( "Jump" ) && jumpCount > 0 ) {
+        if ( Input.GetButtonDown( "Jump" ) && jumpCount > 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName( "PlayerThrow" ) ) {
             //if walljump
             //Do walljump animation and stuff
             //else normal jump
             isJumping = true;
+            anim.SetBool( "IsJumping", true );
+            anim.SetBool( "IsGrounded", false );
             GetComponent<Rigidbody>().velocity = new Vector3( GetComponent<Rigidbody>().velocity.x, Mathf.Sqrt( 2 * jumpHeight * -Physics.gravity.y ), GetComponent<Rigidbody>().velocity.z );
         }
+    }
+
+    public void ResetJumpAnimation (){
+        anim.SetBool( "IsJumping", false );
     }
 
     #endregion
@@ -328,15 +351,15 @@ public class PlayerMovement : MonoBehaviour {
     #endregion
 
     #region Collision Region
-
-    void OnCollisionEnter( Collision col ) {
-        /*if ( !isGrounded ) {
+    /*
+    void OnCollisionStay( Collision col ) {
+        if ( !isGrounded ) {
             //Walljump check
             if ( Physics.Raycast( transform.position, transform.GetChild( 0 ).right, 0.8f ) ) {
                 jumpCount = numberOfJumps;
             }
-        }*/
-    }
+        }
+    }*/
 
     #endregion
 
