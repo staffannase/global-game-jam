@@ -1752,7 +1752,7 @@ GameObject:
   - component: {fileID: 410545731}
   - component: {fileID: 410545730}
   m_Layer: 0
-  m_Name: WaterPlane
+  m_Name: Water plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
