@@ -9,6 +9,9 @@ TagManager:
   - Deathwater
   - Fruit
   - Hand
+  - fruit
+  - player
+  - hand
   - Undefined
   - Grape
   - Peach
@@ -23,8 +26,8 @@ TagManager:
   - 
   - Projectiles
   - Player
-  - 
-  - 
+  - Enemy
+  - Ammo
   - 
   - 
   - 

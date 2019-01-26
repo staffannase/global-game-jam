@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 54007049208080214}
   - component: {fileID: 114147580606632948}
   - component: {fileID: 135269488075129454}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: ProjectilePeach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4700557756301126}
   - component: {fileID: 212797685550203506}
   - component: {fileID: 95299214718118474}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: PeachSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2cdb71892301c4185ac4ba8052d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subProjectile: {fileID: 1526245473310934}
   explosion: {fileID: 1198622959837422, guid: 14163604228560449baa1ecc89aea014, type: 2}
 --- !u!135 &135269488075129454
 SphereCollider:

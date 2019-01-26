@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4512655376534072}
   - component: {fileID: 212054359152919506}
   - component: {fileID: 95467608653623590}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: PeachSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
