@@ -56,8 +56,8 @@ GameObject:
   - component: {fileID: 20596306218179876}
   - component: {fileID: 124248019764790402}
   - component: {fileID: 81681452972683494}
-  - component: {fileID: 114832158513638936}
   - component: {fileID: 114774334473902594}
+  - component: {fileID: 114832158513638936}
   - component: {fileID: 114670131802700810}
   m_Layer: 0
   m_Name: Main Camera
@@ -296,7 +296,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294966783
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -558,6 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeTrigger: {fileID: 4040993864803968}
   volumeLayer:
+    serializedVersion: 2
     m_Bits: 1
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 1
@@ -567,9 +568,6 @@ MonoBehaviour:
     sharpness: 0.25
     stationaryBlending: 0.95
     motionBlending: 0.85
-    <jitter>k__BackingField: {x: 0, y: 0}
-    m_ResetHistory: 1
-    <sampleIndex>k__BackingField: 0
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
@@ -578,54 +576,34 @@ MonoBehaviour:
   fog:
     enabled: 1
     excludeSkybox: 1
-  dithering:
-    m_NoiseTextureIndex: 0
   debugLayer:
     lightMeter:
-      <output>k__BackingField: {fileID: 0}
-      requested: 0
       width: 512
       height: 256
       showCurves: 1
     histogram:
-      <output>k__BackingField: {fileID: 0}
-      requested: 0
       width: 512
       height: 256
       channel: 3
     waveform:
-      <output>k__BackingField: {fileID: 0}
-      requested: 0
       exposure: 0.12
       height: 256
     vectorscope:
-      <output>k__BackingField: {fileID: 0}
-      requested: 0
       size: 256
       exposure: 0.12
-    frameWidth: 0
-    frameHeight: 0
-    <debugOverlayTarget>k__BackingField: {fileID: 0}
-    <debugOverlayActive>k__BackingField: 0
-    <debugOverlay>k__BackingField: 0
     overlaySettings:
       linearDepth: 0
       motionColorIntensity: 4
       motionGridSize: 64
       colorBlindnessType: 0
       colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_Resources: {fileID: 0}
   m_ShowToolkit: 0
   m_ShowCustomSorter: 0
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
-  <haveBundlesBeenInited>k__BackingField: 0
-  m_Camera: {fileID: 0}
-  m_SettingsUpdateNeeded: 1
-  m_IsRenderingInSceneView: 0
-  m_NaNKilled: 0
 --- !u!114 &114832158513638936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -642,10 +620,6 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
-  m_PreviousLayer: 0
-  m_PreviousPriority: 0
-  m_TempColliders: []
-  m_InternalProfile: {fileID: 0}
 --- !u!114 &114899750615331674
 MonoBehaviour:
   m_ObjectHideFlags: 1
