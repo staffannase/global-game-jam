@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraTreeView : MonoBehaviour {
 
     Transform LookAtPoint;
-    float speed = 0.666f;
+    float speed = 100.666f;
 
 
 	// Use this for initialization
@@ -24,7 +24,7 @@ public class CameraTreeView : MonoBehaviour {
 
             Vector3 lTargetDir = LookAtPoint.position - other.transform.position;
             lTargetDir.y = 0.0f;
-            other.transform.rotation = Quaternion.RotateTowards( other.transform.rotation, Quaternion.LookRotation( lTargetDir ), Time.time * speed );
+            other.transform.rotation = Quaternion.RotateTowards( other.transform.rotation, Quaternion.LookRotation( lTargetDir ), Time.deltaTime * speed );
         }
     }
 }
