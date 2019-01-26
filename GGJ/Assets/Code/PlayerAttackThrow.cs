@@ -23,20 +23,22 @@ public class PlayerAttackThrow : MonoBehaviour
         {
             canAttack = false;
             GetComponent<PlayerMovement>().slowPlayerTemporarily();
+
             GetComponent<Animator>().SetTrigger("Fire1");
-            StartCoroutine("delayedAttack");
+            StartCoroutine("peachAttack");
+
         }
 
     }
 
-    IEnumerator delayedAttack()
+    IEnumerator peachAttack()
     {
         yield return new WaitForSeconds(0.4f);
         currentProjectile = Instantiate(projectile, ThrowingPoint.position, Quaternion.identity);
         var throwingAttack = currentProjectile.GetComponent<ThrowingAttack>();
         Vector3 aimVector = FindObjectOfType<CameraOrbit>().transform.position - Camera.main.transform.position;
         Vector3 aimingModifier = new Vector3(0, 3, 0);
-        throwingAttack.perform(1000, aimVector + aimingModifier, 0);
+        throwingAttack.perform(1000, aimVector + aimingModifier);
         yield return new WaitForSeconds(1.3f);
         canAttack = true;
 

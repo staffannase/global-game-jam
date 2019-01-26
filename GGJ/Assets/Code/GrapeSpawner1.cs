@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeachSpawner : MonoBehaviour {
+public class GrapeSpawner1 : MonoBehaviour {
 
     public float SpawnTimer { get; set; }
-    public GameObject Peach;
+    public GameObject Grape;
     public bool Growing { get; set; }
     GameObject Fruit;
     // Use this for initialization
     void Start () {
-        SpawnTimer = Time.fixedTime + 10 + (Random.value-0.5f) * 3;
+        SpawnTimer = Time.fixedTime + 12 + (Random.value-0.5f) * 3;
         Growing = false;
         Fruit = null;
 	}
@@ -21,7 +21,7 @@ public class PeachSpawner : MonoBehaviour {
         if (Time.fixedTime > SpawnTimer)
         {
             SpawnTimer = float.MaxValue;
-            Fruit = Instantiate(Peach, gameObject.transform.position, Quaternion.identity);
+            Fruit = Instantiate(Grape, gameObject.transform.position, Quaternion.identity);
             Growing = true;
         }
         if (Growing && Fruit.transform.localScale.sqrMagnitude < Vector3.one.sqrMagnitude * 1)
@@ -34,7 +34,7 @@ public class PeachSpawner : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Peach")
+        if (other.gameObject.tag == "Grape")
         {
             SpawnTimer = Time.fixedTime + 10;
         }

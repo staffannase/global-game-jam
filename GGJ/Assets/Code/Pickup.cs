@@ -23,7 +23,7 @@ public class Pickup : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Hand = GameObject.FindGameObjectWithTag("Hand");
+        //Hand = GameObject.FindGameObjectWithTag("Hand");
         State = state.free;
         Acceleration = 0;
         Collider c = gameObject.GetComponent<Collider>();
@@ -41,7 +41,9 @@ public class Pickup : MonoBehaviour
         {
             //transform.position += Vector3.forward * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Time.deltaTime * Acceleration * (float)0.1);
-            GetComponentInChildren<Animator>().enabled = true;
+            var a = GetComponentInChildren<Animator>();
+            if (a!=null)
+                a.enabled = true;
             Acceleration += 1;
             if (Vector3.Distance(transform.position, Player.transform.position) < 0.001)
             {
@@ -54,7 +56,9 @@ public class Pickup : MonoBehaviour
             transform.localScale += Vector3.one * Time.deltaTime * Acceleration * (float)0.5;
             Acceleration += 2;
 
-            GetComponentInChildren<Animator>().speed*=2;
+            var a = GetComponentInChildren<Animator>();
+            if (a!=null)
+                a.speed *= 2;
             if (transform.localScale.sqrMagnitude > (Vector3.one * 2.0f).sqrMagnitude)
             {
                 State = state.pickedup;
@@ -62,7 +66,7 @@ public class Pickup : MonoBehaviour
         }
         if (State == state.pickedup)
         {
-            Destroy(this.gameObject);
+                        Destroy(gameObject);
         }
 
     }
