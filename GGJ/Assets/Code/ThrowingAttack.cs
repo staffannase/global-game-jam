@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ThrowingAttack : MonoBehaviour
 {
-    public GameObject subProjectile;
     public GameObject explosion;
+    private GameObject subItem;
     private Rigidbody body;
     private int splitCount;
 
@@ -42,7 +42,7 @@ public class ThrowingAttack : MonoBehaviour
         Vector3 start = transform.position;
         start += transform.forward.normalized * 10;
 
-        GameObject newProjectile = Instantiate(subProjectile, transform.position, transform.rotation);
+        GameObject newProjectile = Instantiate(subItem, transform.position, transform.rotation);
         Destroy(newProjectile, 5f);
         Vector3 newVelocity = new Vector3(
             body.velocity.x + xShatter,
@@ -52,9 +52,15 @@ public class ThrowingAttack : MonoBehaviour
         newProjectile.GetComponent<Rigidbody>().velocity = newVelocity;
     }
 
-    public void perform(int speed, Vector3 direction, int splitCount)
+    public void perform(int speed, Vector3 direction)
+    {
+        this.perform(speed, direction, 0, null);
+    }
+
+    public void perform(int speed, Vector3 direction, int splitCount, GameObject subItem)
     {
         this.splitCount = splitCount;
+        this.subItem = subItem;
         body = GetComponent<Rigidbody>();
         body.AddForce(direction * Time.deltaTime * speed);
     }
