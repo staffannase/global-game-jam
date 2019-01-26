@@ -762,6 +762,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114546270914886868, guid: d83986057098b9d4487cd9cf591e8fc7,
+        type: 2}
+      propertyPath: peach
+      value: 
+      objectReference: {fileID: 1526245473310934, guid: ccdbe24a240a19d459bb9424c14a10f0,
+        type: 2}
+    - target: {fileID: 114546270914886868, guid: d83986057098b9d4487cd9cf591e8fc7,
+        type: 2}
+      propertyPath: grape
+      value: 
+      objectReference: {fileID: 1116462841595452, guid: 803f4e735f7d6894db8a99a0a6a98b0b,
+        type: 2}
+    - target: {fileID: 114546270914886868, guid: d83986057098b9d4487cd9cf591e8fc7,
+        type: 2}
+      propertyPath: grapeFragment
+      value: 
+      objectReference: {fileID: 1047589090619736, guid: 3994217a97b79f94fbcea8cad24e18d2,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d83986057098b9d4487cd9cf591e8fc7, type: 2}
   m_IsPrefabParent: 0

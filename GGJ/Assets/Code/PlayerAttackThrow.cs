@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerAttackThrow : MonoBehaviour
 {
     public Transform ThrowingPoint;
+    public GameObject peach;
+    public GameObject grape;
+    public GameObject grapeFragment;
+
     private InventoryController inventory;
     private PlayerMovement movement;
     private Animator animator;
-    public GameObject projectile;
-    private GameObject currentProjectile;
-    private bool canAttack = true;
+    private bool ongoingAttack = false;
 
     // Use this for initialization
     void Start()
@@ -23,9 +25,13 @@ public class PlayerAttackThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && canAttack && !GetComponent<Animator>().GetBool("IsJumping") ) 
+        if (Input.GetButtonDown("Fire1")
+            && !animator.GetBool("IsJumping")
+            && inventory.hasAmmo()
+            && !ongoingAttack
+            ) 
         {
-            canAttack = false;
+            ongoingAttack = true;
             movement.slowPlayerTemporarily();
             animator.SetTrigger("Fire1");
             inventory.popAmmo();
@@ -38,7 +44,7 @@ public class PlayerAttackThrow : MonoBehaviour
                     StartCoroutine("peachAttack");
                     break;
                 default:
-                    canAttack = true;
+                    ongoingAttack = false;
                     break;
             }
             
@@ -48,26 +54,26 @@ public class PlayerAttackThrow : MonoBehaviour
     IEnumerator grapeAttack()
     {
         yield return new WaitForSeconds(0.4f);
-        currentProjectile = Instantiate(projectile, ThrowingPoint.position, Quaternion.identity);
-        var throwingAttack = currentProjectile.GetComponent<ThrowingAttack>();
+        var current = Instantiate(grape, ThrowingPoint.position, Quaternion.identity);
+        var throwingAttack = current.GetComponent<ThrowingAttack>();
         Vector3 aimVector = FindObjectOfType<CameraOrbit>().transform.position - Camera.main.transform.position;
-        Vector3 aimingModifier = new Vector3(0, 3, 0);
-        throwingAttack.perform(1000, aimVector + aimingModifier);
+        Vector3 aimingModifier = new Vector3(0, 4, 0);
+        throwingAttack.perform(500, aimVector + aimingModifier, 20, grapeFragment);
         yield return new WaitForSeconds(1.3f);
-        canAttack = true;
+        ongoingAttack = false;
 
     }
 
     IEnumerator peachAttack()
     {
         yield return new WaitForSeconds(0.4f);
-        currentProjectile = Instantiate(projectile, ThrowingPoint.position, Quaternion.identity);
-        var throwingAttack = currentProjectile.GetComponent<ThrowingAttack>();
+        var current = Instantiate(peach, ThrowingPoint.position, Quaternion.identity);
+        var throwingAttack = current.GetComponent<ThrowingAttack>();
         Vector3 aimVector = FindObjectOfType<CameraOrbit>().transform.position - Camera.main.transform.position;
-        Vector3 aimingModifier = new Vector3(0, 3, 0);
-        throwingAttack.perform(1000, aimVector + aimingModifier);
+        Vector3 aimingModifier = new Vector3(0, 1.5f, 0);
+        throwingAttack.perform(3200, aimVector + aimingModifier);
         yield return new WaitForSeconds(1.3f);
-        canAttack = true;
+        ongoingAttack = false;
 
     }
 }
