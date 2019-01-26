@@ -20,6 +20,8 @@ public class PlayerAttackThrow : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && currentProjectile == null)
         {
+            GetComponent<PlayerMovement>().slowPlayerTemporarily();
+            GetComponent<Animator>().SetTrigger("Fire1");
             currentProjectile = Instantiate(projectile, ThrowingPoint.position, Quaternion.identity);
             var throwingAttack = currentProjectile.GetComponent<ThrowingAttack>();
             throwingAttack.perform(1550, new Vector3(-0.25f, 1, -1), 10, 5);

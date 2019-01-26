@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     //Movement Variables
     float horizontalMovement = 0f;
     float verticalMovement = 0f;
-    public float movementSpeed = 5f;
+    private const float ORIGINAL_MOVEMENT_SPEED = 5f;
+    private float movementSpeed = ORIGINAL_MOVEMENT_SPEED;
     public int numberOfJumps = 2;
     int jumpCount = 2;
     bool isJumping = false;
@@ -258,6 +259,21 @@ public class PlayerMovement : MonoBehaviour {
 
     private int direction = 1;
 
+    // Temporary throwing speed decrease
+    public void slowPlayerTemporarily()
+    {
+        StartCoroutine("slowPlayerTemporarilyCoRoutine");
+    }
+
+    private IEnumerator slowPlayerTemporarilyCoRoutine()
+    {
+        movementSpeed = 2f;
+        yield return new WaitForSeconds(1f);
+        movementSpeed = ORIGINAL_MOVEMENT_SPEED;
+
+        
+    }
+
     //Handle movement input
     void Movement() {
         RaycastHit rayHit;
@@ -383,7 +399,7 @@ public class PlayerMovement : MonoBehaviour {
     public Font myFont;
     string tempInput = string.Empty;
     Rect r = new Rect( Screen.width / 2f - Screen.width / 4, Screen.height / 2 - 50, 50, 50 );
-    void OnGUI() {
+    /*void OnGUI() {
         if ( showStats ) {
             GUI.Label( new Rect( 10, 10, Screen.width, 20 ), "INPUT VARIABLES" );
             GUI.Label( new Rect( 10, 30, Screen.width, 20 ), "Axis: h: " + Input.GetAxisRaw( "Horizontal" ).ToString() + ", v: " + Input.GetAxisRaw( "Vertical" ).ToString() );
@@ -413,7 +429,7 @@ public class PlayerMovement : MonoBehaviour {
 			GUI.Label(new Rect(10, 50, Screen.width, 20), 
 			GUI.Label(new Rect(10, 50, Screen.width, 20), 
 			*/
-        }
+        /*}
         if ( showInputBuffer ) {
             style.font = myFont;
             style.fontSize = 32;
@@ -443,7 +459,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             GUI.Label( r, s, style );
         }
-    }
+    }*/
 
     #endregion
 }
