@@ -3,74 +3,12 @@ guid: 783464771c2b6d21b8306645c3280965
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Circle
-    100002: Circle.001
-    100004: Circle.002
-    100006: Cube
-    100008: Cube.001
-    100010: Cube.002
-    100012: Cube.003
-    100014: Cube.004
-    100016: //RootNode
-    100018: Plane
-    100020: Plane.001
-    100022: Plane.002
-    100024: Plane.003
-    100026: Text
-    400000: Circle
-    400002: Circle.001
-    400004: Circle.002
-    400006: Cube
-    400008: Cube.001
-    400010: Cube.002
-    400012: Cube.003
-    400014: Cube.004
-    400016: //RootNode
-    400018: Plane
-    400020: Plane.001
-    400022: Plane.002
-    400024: Plane.003
-    400026: Text
+    100000: //RootNode
+    400000: //RootNode
     2100000: No Name
-    2300000: Circle
-    2300002: Circle.001
-    2300004: Circle.002
-    2300006: Cube
-    2300008: Cube.001
-    2300010: Cube.002
-    2300012: Cube.003
-    2300014: Cube.004
-    2300016: Plane
-    2300018: Plane.001
-    2300020: Plane.002
-    2300022: Plane.003
-    2300024: Text
-    3300000: Circle
-    3300002: Circle.001
-    3300004: Circle.002
-    3300006: Cube
-    3300008: Cube.001
-    3300010: Cube.002
-    3300012: Cube.003
-    3300014: Cube.004
-    3300016: Plane
-    3300018: Plane.001
-    3300020: Plane.002
-    3300022: Plane.003
-    3300024: Text
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Plane.003
-    4300002: Plane.002
-    4300004: Cube.004
-    4300006: Cube.003
-    4300008: Cube.002
-    4300010: Cube.001
-    4300012: Plane.001
-    4300014: Cube
-    4300016: Circle.002
-    4300018: Circle.001
-    4300020: Text
-    4300022: Plane
-    4300024: Circle
   externalObjects: {}
   materials:
     importMaterials: 1
