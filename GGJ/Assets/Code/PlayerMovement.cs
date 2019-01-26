@@ -283,9 +283,11 @@ public class PlayerMovement : MonoBehaviour {
          if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
             jumpCount = numberOfJumps;
             isGrounded = true;
+            anim.SetBool( "IsGrounded", isGrounded );
         } else {
             isGrounded = false;
-            if( isJumping ) {
+            anim.SetBool( "IsGrounded", isGrounded );
+            if ( isJumping ) {
                 jumpCount--;
                 isJumping = false;
             }
@@ -312,8 +314,14 @@ public class PlayerMovement : MonoBehaviour {
             //Do walljump animation and stuff
             //else normal jump
             isJumping = true;
+            anim.SetBool( "IsJumping", true );
+            anim.SetBool( "IsGrounded", false );
             GetComponent<Rigidbody>().velocity = new Vector3( GetComponent<Rigidbody>().velocity.x, Mathf.Sqrt( 2 * jumpHeight * -Physics.gravity.y ), GetComponent<Rigidbody>().velocity.z );
         }
+    }
+
+    public void ResetJumpAnimation (){
+        anim.SetBool( "IsJumping", false );
     }
 
     #endregion
