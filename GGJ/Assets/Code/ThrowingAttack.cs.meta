@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1c2cdb71892301c4185ac4ba8052d2b1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - subProjectile: {fileID: 1526245473310934, guid: 7281d125997cfc141af2efacc36f4f61,
+      type: 2}
+  - fragment: {fileID: 1681068583870086, guid: 74d542fd2bd797440b8e8837d26fe956, type: 2}
+  - explosion: {fileID: 1198622959837422, guid: 14163604228560449baa1ecc89aea014,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
