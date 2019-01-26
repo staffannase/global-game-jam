@@ -19,7 +19,7 @@ public class PlayerAttackThrow : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1") && canAttack)
+        if (Input.GetButtonDown("Fire1") && canAttack && !GetComponent<Animator>().GetCurrentAnimatorStateInfo( 0 ).IsName( "JumpStart" ) && !GetComponent<Animator>().GetCurrentAnimatorStateInfo( 0 ).IsName( "Jump" ) && !GetComponent<Animator>().GetCurrentAnimatorStateInfo( 0 ).IsName( "JumpEnd" ) )
         {
             canAttack = false;
             GetComponent<PlayerMovement>().slowPlayerTemporarily();

@@ -307,9 +307,8 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetFloat( "Move", Mathf.Abs( verticalMovement ) + Mathf.Abs( horizontalMovement ) );
         }
 
-
         //Jump
-        if ( Input.GetButtonDown( "Jump" ) && jumpCount > 0 ) {
+        if ( Input.GetButtonDown( "Jump" ) && jumpCount > 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName( "PlayerThrow" ) ) {
             //if walljump
             //Do walljump animation and stuff
             //else normal jump
@@ -352,15 +351,15 @@ public class PlayerMovement : MonoBehaviour {
     #endregion
 
     #region Collision Region
-
-    void OnCollisionEnter( Collision col ) {
-        /*if ( !isGrounded ) {
+    /*
+    void OnCollisionStay( Collision col ) {
+        if ( !isGrounded ) {
             //Walljump check
             if ( Physics.Raycast( transform.position, transform.GetChild( 0 ).right, 0.8f ) ) {
                 jumpCount = numberOfJumps;
             }
-        }*/
-    }
+        }
+    }*/
 
     #endregion
 
