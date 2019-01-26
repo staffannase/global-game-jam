@@ -256,13 +256,15 @@ public class PlayerMovement : MonoBehaviour {
 
     #region Movement Functions
 
+    private int direction = 1;
+
     //Handle movement input
     void Movement() {
         RaycastHit rayHit;
         horizontalMovement = Input.GetAxis( "Horizontal" );
         verticalMovement = Input.GetAxis( "Vertical" );
-
-        if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
+        
+         if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
             jumpCount = numberOfJumps;
             isGrounded = true;
         } else {
