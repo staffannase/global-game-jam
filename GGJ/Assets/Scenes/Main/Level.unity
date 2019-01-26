@@ -5221,6 +5221,24 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2a40c0ca263f8786c9a13095aaa7a76c, type: 3}
   m_PrefabInternal: {fileID: 1668749432}
+--- !u!1 &1685872454 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1947664395563824, guid: d83986057098b9d4487cd9cf591e8fc7,
+    type: 2}
+  m_PrefabInternal: {fileID: 546503230}
+--- !u!114 &1685872460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1685872454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2938605ffaaed42ada8a56859e7c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowingPoint: {fileID: 829155761}
+  projectile: {fileID: 1526245473310934, guid: 7281d125997cfc141af2efacc36f4f61, type: 2}
 --- !u!1001 &1691571128
 Prefab:
   m_ObjectHideFlags: 0
