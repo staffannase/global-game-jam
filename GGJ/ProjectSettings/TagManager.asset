@@ -9,6 +9,9 @@ TagManager:
   - Deathwater
   - Fruit
   - Hand
+  - Undefined
+  - Grape
+  - Peach
   layers:
   - Default
   - TransparentFX
