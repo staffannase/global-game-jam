@@ -255,20 +255,24 @@ public class PlayerMovement : MonoBehaviour {
 
     #region Movement Functions
 
+    private int direction = 1;
+
     //Handle movement input
     void Movement() {
         RaycastHit rayHit;
         horizontalMovement = Input.GetAxis( "Horizontal" );
         verticalMovement = Input.GetAxis( "Vertical" );
 
-        anim.SetFloat( "Move", Mathf.Abs( verticalMovement ) + Mathf.Abs( horizontalMovement ) );
-
-
-        if (horizontalMovement  < 0) {
-            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = true;
-        } else if ( horizontalMovement > 0 ) {
-            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = false;
+        if (horizontalMovement > 0)
+        {
+            direction = 1;
+        } 
+        else if (horizontalMovement < 0)
+        {
+            direction = -1;
         }
+
+        anim.SetFloat ("Move", horizontalMovement + direction * Mathf.Abs (verticalMovement));
 
         if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
             jumpCount = numberOfJumps;
@@ -280,13 +284,6 @@ public class PlayerMovement : MonoBehaviour {
                 isJumping = false;
             }
         }
-
-        //Turn
-        /*if(horizontalMovement > 0.2f){
-			transform.GetChild(0).localEulerAngles = new Vector3(0,0,0);
-		}else if(horizontalMovement < -0.2f){
-			transform.GetChild(0).localEulerAngles = new Vector3(0,180,0);
-		}*/
 
         //Jump
         if ( Input.GetButtonDown( "Jump" ) && jumpCount > 0 ) {
