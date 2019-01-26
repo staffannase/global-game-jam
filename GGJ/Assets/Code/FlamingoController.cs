@@ -7,7 +7,7 @@ public enum StateOfEnemy
     Idle
 }
 
-public class EnemyController : MonoBehaviour
+public class FlamingoController : MonoBehaviour
 {
 
     [SerializeField] private Transform[] pointsToPatrol;
@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     private int indexOfPatroling = 0;
 
     private Transform currentTarget;
+
+    private float minDistance = 0.1f;
 
     void Start ()
     {
@@ -82,7 +84,7 @@ public class EnemyController : MonoBehaviour
 
     void CheckReachingPatrolPoint()
     {
-        if (transform.position == currentTarget.position) {
+        if ((transform.position-currentTarget.position).sqrMagnitude <= minDistance) {
             indexOfPatroling++;
 
             if (indexOfPatroling == pointsToPatrol.Length) {
