@@ -24,7 +24,7 @@ public class GrapeSpawner1 : MonoBehaviour {
             Fruit = Instantiate(Grape, gameObject.transform.position, Quaternion.identity);
             Growing = true;
         }
-        if (Growing && Fruit.transform.localScale.sqrMagnitude < Vector3.one.sqrMagnitude * 1)
+        if (Growing && Fruit!=null && Fruit.transform.localScale.sqrMagnitude < Vector3.one.sqrMagnitude * 1)
         {
             Fruit.transform.localScale += Vector3.one * Time.deltaTime * (float)0.2;
             if (Fruit.transform.localScale.sqrMagnitude >= Vector3.one.sqrMagnitude * 3)
