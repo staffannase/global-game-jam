@@ -28,7 +28,14 @@ public class WorldTreeScript : MonoBehaviour {
 
     public void AddLife()
     {
-        
-    }
+        if (state == TreeState.Lifeless)
+        {
 
+            foreach (Transform t in LeafPlaces)
+            {
+                var leaf = Instantiate(LeafPrefab);
+            }
+
+        }
+    }
 }
