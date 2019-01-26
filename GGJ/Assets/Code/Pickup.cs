@@ -19,6 +19,8 @@ public class Pickup : MonoBehaviour
     private GameObject Hand { get; set; }
     public state State { get; set; }
     public int Acceleration { get; set; }
+    public InventoryController Inventory;
+
     // Use this for initialization
     void Start()
     {
@@ -28,6 +30,7 @@ public class Pickup : MonoBehaviour
         Acceleration = 0;
         Collider c = gameObject.GetComponent<Collider>();
         c.isTrigger = true;
+        Inventory = Player.GetComponent<InventoryController>();
     }
 
     // Update is called once per frame
@@ -66,7 +69,11 @@ public class Pickup : MonoBehaviour
         }
         if (State == state.pickedup)
         {
-                        Destroy(gameObject);
+            if (tag == "Grape")
+                Inventory.addAmmo(InventoryController.ProjectileType.Grape);
+            else if (tag == "Peach")
+                Inventory.addAmmo(InventoryController.ProjectileType.Peach);
+            Destroy(gameObject);
         }
 
     }

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114142292051401336}
   m_Layer: 0
   m_Name: Peach
-  m_TagString: Fruit
+  m_TagString: Peach
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15997f9091a40842804f45ed73e3954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
 --- !u!135 &135424024859829382
 SphereCollider:
   m_ObjectHideFlags: 1
