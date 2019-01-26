@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     //Movement Variables
     float horizontalMovement = 0f;
     float verticalMovement = 0f;
-    public float movementSpeed = 5f;
+    private const float ORIGINAL_MOVEMENT_SPEED = 5f;
+    private float movementSpeed = ORIGINAL_MOVEMENT_SPEED;
     public int numberOfJumps = 2;
     int jumpCount = 2;
     bool isJumping = false;
@@ -257,6 +258,21 @@ public class PlayerMovement : MonoBehaviour {
     #region Movement Functions
 
     private int direction = 1;
+
+    // Temporary throwing speed decrease
+    public void slowPlayerTemporarily()
+    {
+        StartCoroutine("slowPlayerTemporarilyCoRoutine");
+    }
+
+    private IEnumerator slowPlayerTemporarilyCoRoutine()
+    {
+        movementSpeed = 2f;
+        yield return new WaitForSeconds(1f);
+        movementSpeed = ORIGINAL_MOVEMENT_SPEED;
+
+        
+    }
 
     //Handle movement input
     void Movement() {
