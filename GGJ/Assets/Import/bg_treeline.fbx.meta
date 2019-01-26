@@ -1,33 +1,26 @@
 fileFormatVersion: 2
-guid: 18eff8f6d8dc3a3c2979c8845d2648bf
+guid: e2e3812e381c04dd484b9be430704dfe
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Plane.004
-    100004: Plane.005
-    100006: Plane.006
-    100008: Plane.007
+    100002: Plane.005
+    100004: Plane.006
+    100006: Plane.007
     400000: //RootNode
-    400002: Plane.004
-    400004: Plane.005
-    400006: Plane.006
-    400008: Plane.007
+    400002: Plane.005
+    400004: Plane.006
+    400006: Plane.007
     2100000: No Name
-    2300000: //RootNode
-    2300002: Plane.004
-    2300004: Plane.005
-    2300006: Plane.006
-    2300008: Plane.007
-    3300000: //RootNode
-    3300002: Plane.004
-    3300004: Plane.005
-    3300006: Plane.006
-    3300008: Plane.007
-    4300000: Plane.004
-    4300002: Plane.007
-    4300004: Plane.006
-    4300006: Plane.005
+    2300000: Plane.005
+    2300002: Plane.006
+    2300004: Plane.007
+    3300000: Plane.005
+    3300002: Plane.006
+    3300004: Plane.007
+    4300000: Plane.007
+    4300002: Plane.006
+    4300004: Plane.005
   externalObjects: {}
   materials:
     importMaterials: 1
