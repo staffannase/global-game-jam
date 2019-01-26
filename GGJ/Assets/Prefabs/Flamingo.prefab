@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4704865724134604}
   - component: {fileID: 33972197814323146}
   - component: {fileID: 23387923407328476}
-  - component: {fileID: 114680462527517332}
+  - component: {fileID: 114575037281210026}
   - component: {fileID: 135208386864974280}
   - component: {fileID: 54553600745299110}
   m_Layer: 0
@@ -100,7 +100,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114680462527517332
+--- !u!114 &114575037281210026
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -111,12 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b69ce4929c03384b96989d99cf4bb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsToPatrol:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 3
+  pointsToPatrol: []
+  speed: 1
 --- !u!135 &135208386864974280
 SphereCollider:
   m_ObjectHideFlags: 1

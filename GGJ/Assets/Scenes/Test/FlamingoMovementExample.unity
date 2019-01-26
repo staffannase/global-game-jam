@@ -523,6 +523,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114575037281210026, guid: 58e389c52694836448e4dce2c6e7e264,
+        type: 2}
+      propertyPath: pointsToPatrol.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4704865724134604, guid: 58e389c52694836448e4dce2c6e7e264, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
