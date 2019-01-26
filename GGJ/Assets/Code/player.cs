@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent( typeof( Rigidbody ) )]
 [RequireComponent( typeof( CapsuleCollider ) )]
 
-public class PlayerMovement : MonoBehaviour {
+public class Player : MonoBehaviour {
 
     //Movement Variables
     float horizontalMovement = 0f;
@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour {
     public float movementSpeed = 5f;
     public int numberOfJumps = 2;
     int jumpCount = 2;
-    bool isJumping = false;
     public float jumpHeight = 2.2f;
     public float maxVelocityChange = 5.0f;
     bool isGrounded = false;
@@ -31,7 +30,6 @@ public class PlayerMovement : MonoBehaviour {
     bool right = false;
 
     //Animation Variables
-    Animator anim;
 
     //DEBUG VARS
     bool showStats = false;
@@ -43,7 +41,6 @@ public class PlayerMovement : MonoBehaviour {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().mass = 60f;
-        anim = GetComponent<Animator>();
     }
 
     // Use this for initialization
@@ -61,9 +58,9 @@ public class PlayerMovement : MonoBehaviour {
 
 
         //Debugfuncs
-        //DebugDrawRays();
-        //DebugInput();
-        //DebugPrintVars();
+        DebugDrawRays();
+        DebugInput();
+        DebugPrintVars();
     }
 
     #region Input Queue Handler Region
@@ -261,24 +258,11 @@ public class PlayerMovement : MonoBehaviour {
         horizontalMovement = Input.GetAxis( "Horizontal" );
         verticalMovement = Input.GetAxis( "Vertical" );
 
-        anim.SetFloat( "Move", Mathf.Abs( verticalMovement ) + Mathf.Abs( horizontalMovement ) );
-
-
-        if (horizontalMovement  < 0) {
-            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = true;
-        } else if ( horizontalMovement > 0 ) {
-            transform.GetChild( 1 ).GetComponent<SpriteRenderer>().flipX = false;
-        }
-
         if ( Physics.Raycast( this.transform.position, -transform.up, out rayHit, 1.05f, 9 ) ) {
             jumpCount = numberOfJumps;
             isGrounded = true;
         } else {
             isGrounded = false;
-            if( isJumping ) {
-                jumpCount--;
-                isJumping = false;
-            }
         }
 
         //Turn
@@ -293,7 +277,7 @@ public class PlayerMovement : MonoBehaviour {
             //if walljump
             //Do walljump animation and stuff
             //else normal jump
-            isJumping = true;
+            jumpCount--;
             GetComponent<Rigidbody>().velocity = new Vector3( GetComponent<Rigidbody>().velocity.x, Mathf.Sqrt( 2 * jumpHeight * -Physics.gravity.y ), GetComponent<Rigidbody>().velocity.z );
         }
     }
@@ -310,7 +294,7 @@ public class PlayerMovement : MonoBehaviour {
     void FixedMovement() {
         //Movement
         Vector3 targetVelocity = new Vector3( horizontalMovement, 0, verticalMovement );
-        targetVelocity = transform.TransformDirection( targetVelocity );        
+        targetVelocity = transform.TransformDirection( targetVelocity );
         targetVelocity *= movementSpeed;
         Vector3 velocity = GetComponent<Rigidbody>().velocity;
         Vector3 velocityChange = ( targetVelocity - velocity );
@@ -361,7 +345,7 @@ public class PlayerMovement : MonoBehaviour {
         Debug.Log( "maxVelocityChange: " + maxVelocityChange.ToString() );*/
 
         //Debug.Log( "numberOfJumps: " + numberOfJumps.ToString() );
-        //Debug.Log( "jumpCount: " + jumpCount.ToString() );
+        Debug.Log( "jumpCount: " + jumpCount.ToString() );
         //Debug.Log( "jumpHeight: " + jumpHeight.ToString() );
 
         //Debug.Log( "isGrounded: " + isGrounded.ToString() );
