@@ -2096,6 +2096,10 @@ Prefab:
       propertyPath: far clip plane
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 4381005569128116, guid: d83986057098b9d4487cd9cf591e8fc7, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d83986057098b9d4487cd9cf591e8fc7, type: 2}
   m_IsPrefabParent: 0
@@ -2115,6 +2119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d4a2f1306ff614b8350588b1a2b91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &546503238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546503231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2938605ffaaed42ada8a56859e7c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowingPoint: {fileID: 829155761}
+  projectile: {fileID: 1526245473310934, guid: 7281d125997cfc141af2efacc36f4f61, type: 2}
 --- !u!1001 &556223109
 Prefab:
   m_ObjectHideFlags: 0
