@@ -50,9 +50,9 @@ public class Pickup : MonoBehaviour
         }
         if (State == state.taken)
         {
-            transform.localScale += Vector3.one * Time.deltaTime * Acceleration * (float)0.01;
+            transform.localScale += Vector3.one * Time.deltaTime * Acceleration * (float)0.5;
             Acceleration += 2;
-            if (transform.localScale.sqrMagnitude > (Vector3.one * 0.3f).sqrMagnitude)
+            if (transform.localScale.sqrMagnitude > (Vector3.one * 2.0f).sqrMagnitude)
             {
                 State = state.pickedup;
             }
