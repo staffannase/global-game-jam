@@ -383,7 +383,7 @@ public class PlayerMovement : MonoBehaviour {
     public Font myFont;
     string tempInput = string.Empty;
     Rect r = new Rect( Screen.width / 2f - Screen.width / 4, Screen.height / 2 - 50, 50, 50 );
-    void OnGUI() {
+    /*void OnGUI() {
         if ( showStats ) {
             GUI.Label( new Rect( 10, 10, Screen.width, 20 ), "INPUT VARIABLES" );
             GUI.Label( new Rect( 10, 30, Screen.width, 20 ), "Axis: h: " + Input.GetAxisRaw( "Horizontal" ).ToString() + ", v: " + Input.GetAxisRaw( "Vertical" ).ToString() );
@@ -413,7 +413,7 @@ public class PlayerMovement : MonoBehaviour {
 			GUI.Label(new Rect(10, 50, Screen.width, 20), 
 			GUI.Label(new Rect(10, 50, Screen.width, 20), 
 			*/
-        }
+        /*}
         if ( showInputBuffer ) {
             style.font = myFont;
             style.fontSize = 32;
@@ -443,7 +443,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             GUI.Label( r, s, style );
         }
-    }
+    }*/
 
     #endregion
 }

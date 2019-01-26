@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - hand
-  - fruit
   - pickedupparticles
   - Water
   - Deathwater
+  - Fruit
+  - Hand
   layers:
   - Default
   - TransparentFX
