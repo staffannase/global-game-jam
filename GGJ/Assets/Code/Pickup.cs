@@ -41,6 +41,7 @@ public class Pickup : MonoBehaviour
         {
             //transform.position += Vector3.forward * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Time.deltaTime * Acceleration * (float)0.1);
+            GetComponentInChildren<Animator>().enabled = true;
             Acceleration += 1;
             if (Vector3.Distance(transform.position, Player.transform.position) < 0.001)
             {
@@ -52,6 +53,8 @@ public class Pickup : MonoBehaviour
         {
             transform.localScale += Vector3.one * Time.deltaTime * Acceleration * (float)0.5;
             Acceleration += 2;
+
+            GetComponentInChildren<Animator>().speed*=2;
             if (transform.localScale.sqrMagnitude > (Vector3.one * 2.0f).sqrMagnitude)
             {
                 State = state.pickedup;
