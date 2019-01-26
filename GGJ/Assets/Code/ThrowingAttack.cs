@@ -38,9 +38,9 @@ public class ThrowingAttack : MonoBehaviour
         
         GameObject newProjectile = Instantiate(subProjectile, transform.position, transform.rotation);
         Vector3 newVelocity = new Vector3(
-            body.velocity.x + Random.Range(-1.5f, -0.50f),
+            body.velocity.x + xShatter,
             body.velocity.y + Random.Range(1f, 2f),
-            body.velocity.z + xShatter
+            body.velocity.z + Random.Range(-1.5f, -0.50f)
             );
         newProjectile.GetComponent<Rigidbody>().velocity = newVelocity;
     }
