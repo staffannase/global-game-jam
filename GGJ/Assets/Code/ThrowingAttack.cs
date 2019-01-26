@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Throwing : MonoBehaviour
+public class ThrowingAttack : MonoBehaviour
 {
     public GameObject subProjectile;
     public GameObject fragment;
@@ -45,7 +45,7 @@ public class Throwing : MonoBehaviour
         newProjectile.GetComponent<Rigidbody>().velocity = newVelocity;
     }
 
-    public void throwStick(int speed, Vector3 direction, int fragmentCount, int splitCount)
+    public void perform(int speed, Vector3 direction, int fragmentCount, int splitCount)
     {
         this.fragmentCount = fragmentCount;
         this.splitCount = splitCount;
@@ -55,7 +55,7 @@ public class Throwing : MonoBehaviour
 
     public void throwStick(int speed, Vector3 direction)
     {
-        this.throwStick(speed, direction, DEFAULT_FRAGMENT_COUNT, 0);
+        this.perform(speed, direction, DEFAULT_FRAGMENT_COUNT, 0);
 
     }
 
