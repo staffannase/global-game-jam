@@ -92,9 +92,9 @@ public class EnemyController : MonoBehaviour {
 
     void OnCollisionEnter (Collision coll)
     {
-        Debug.Log(coll.transform.name);
+        //Debug.Log(coll.transform.name);
         if (coll.gameObject.name.Contains (correctAmmoName)) {
-            Debug.Log ("MakeFriend " + name);
+            //Debug.Log ("MakeFriend " + name);
             MakeFriend ();
             agent.enabled = false;
             Destroy (coll.gameObject);
@@ -109,14 +109,17 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void StopChase () {
-        state = StateOfEnemy.Patrol;
-        GotoNextPoint ();
+        if (state != StateOfEnemy.Friend)
+        {
+            state = StateOfEnemy.Patrol;
+            GotoNextPoint();
+        }
     }
 
     public void MakeFriend () {
         gameObject.layer = 12;
         GetComponentInChildren<SpriteRenderer>().gameObject.layer = 12;
-        state = StateOfEnemy.Idle;
+        state = StateOfEnemy.Friend;
     }
 
     void TryToAttack () {
