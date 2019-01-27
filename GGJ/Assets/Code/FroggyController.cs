@@ -8,11 +8,12 @@ public class FroggyController : MonoBehaviour
     [SerializeField] private float maxAwayFromSpawn = 5f;
     [SerializeField] private float maxJumpRange = 5f;
 
-
-    private StateOfEnemy state = StateOfEnemy.Patrol;
+    // Alert range - same as alerting collider, dont mess with the zohan
+    private float alertRange = 3f;
+    public StateOfEnemy state = StateOfEnemy.Patrol;
 
     private Rigidbody body;
-    private Transform currentTarget;
+    private GameObject player;
     private Animator animator;
 
     private float minDistance = 0.5f;
@@ -21,20 +22,24 @@ public class FroggyController : MonoBehaviour
     private float nextAttackTime;
     private float timeBetweenAttack = 2f;
 
+    private bool showWarFace = false;
     private bool ongoingJump = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody>();
         animator.SetBool("Move", true);
+
         if (orgPos == Vector3.zero)
         {
             orgPos = transform.position;
         }
     }
 
-    Vector3 getJumpingForce()
+    Vector3 getPatrolJump()
     {
         Vector3 pos = transform.position;
         Vector3 home = orgPos-pos;
@@ -45,21 +50,46 @@ public class FroggyController : MonoBehaviour
         return new Vector3(x, pos.y+10, z) * speed;
     }
 
+    Vector3 getChaseJump()
+    {
+        Vector3 target = player.transform.position - transform.position;
+        
+        return new Vector3(target.x, transform.position.y + 10, target.z) * speed * 1.5f;
+    }
+
     IEnumerator jump()
     {
-        animator.SetTrigger("froggyGoJump");
-        body.AddForce(getJumpingForce());
-        yield return new WaitForSeconds(Random.Range(4f,7f));
+
+        Debug.Log(state);
+        if (showWarFace)
+        {
+            yield return new WaitForSeconds(1.5f);
+        } else 
+        {
+            if (state == StateOfEnemy.Patrol)
+            {
+                animator.SetTrigger("froggyGoJump");
+                body.AddForce(getPatrolJump());
+                yield return new WaitForSeconds(Random.Range(4f, 7f));
+            }
+            else if (state == StateOfEnemy.Chase)
+            {
+                animator.SetTrigger("froggyGoJump");
+                body.AddForce(getChaseJump());
+                yield return new WaitForSeconds(Random.Range(3f, 4f));
+            }
+        }
+        showWarFace = false;
         ongoingJump = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.tag);
-
-       if (collision.gameObject.CompareTag("Grape"))
+        if (collision.gameObject.CompareTag("Grape"))
         {
             MakeFriend();
+        } else if (collision.gameObject.CompareTag("Player")) {
+            player.SendMessage("GetDamage");
         } else
         {
             animator.SetTrigger("froggyNoNoNoJump");
@@ -85,13 +115,10 @@ public class FroggyController : MonoBehaviour
 
     void Update()
     {
-
-
         if (ongoingJump)
         {
             return;
         }
-
         switch (state)
         {
             case StateOfEnemy.Patrol:
@@ -99,81 +126,19 @@ public class FroggyController : MonoBehaviour
                 StartCoroutine("jump");
                 break;
             case StateOfEnemy.Chase:
-                if (IsDistanceToTargetIfEnough())
-                {
-                    animator.SetBool("Move", false);
-                    TryToAttack();
-                }
-                else
-                {
-                    RotateTowardTarget();
-                    transform.LookAt(currentTarget);
-                    MoveTowardsCurrentTarget();
-                }
-                break;
-            case StateOfEnemy.Idle:
-                animator.SetBool("Move", false);
+                ongoingJump = true;
+                StartCoroutine("jump");
                 break;
             default:
                 break;
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    public void Chase()
     {
-        if (state != StateOfEnemy.Chase && other.CompareTag("Player"))
-        {
-            Chase(other.transform);
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (state == StateOfEnemy.Chase && other.transform == currentTarget)
-        {
-            Patrol();
-        }
-    }
-
-    void Chase(Transform target)
-    {
+        showWarFace = true;
+        animator.SetTrigger("froggyFullFrontalAllOutAttack");
         state = StateOfEnemy.Chase;
-        currentTarget = target;
-        transform.LookAt(currentTarget);
-        animator.SetBool("Move", true);
     }
 
-    void Patrol()
-    {
-        transform.LookAt(currentTarget);
-        state = StateOfEnemy.Patrol;
-        animator.SetBool("Move", true);
-    }
-
-    void MoveTowardsCurrentTarget()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * speed);
-    }
-
-
-    void RotateTowardTarget()
-    {
-        var targetRotation = Quaternion.LookRotation(currentTarget.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
-    }
-
-    void TryToAttack()
-    {
-        if (nextAttackTime <= Time.time)
-        {
-            animator.SetTrigger("Attack");
-            currentTarget.SendMessage("GetDamage");
-            nextAttackTime = Time.time + timeBetweenAttack;
-        }
-    }
-
-    bool IsDistanceToTargetIfEnough()
-    {
-        return (transform.position - currentTarget.position).sqrMagnitude <= minDistance;
-    }
 }
