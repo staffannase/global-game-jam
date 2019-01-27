@@ -48,7 +48,7 @@ public class FroggyController : MonoBehaviour
     {
         animator.SetTrigger("froggyGoJump");
         body.AddForce(getJumpingForce());
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(Random.Range(4f,7f));
         ongoingJump = false;
     }
 
