@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 135417586034963620}
   m_Layer: 11
   m_Name: ProjectileGrapeFragment
-  m_TagString: Untagged
+  m_TagString: Grape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047589090619736}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.32

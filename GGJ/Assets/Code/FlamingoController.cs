@@ -85,7 +85,7 @@ public class FlamingoController : MonoBehaviour
 
     public void MakeFriend()
     {
-        gameObject.layer = 10;
+        gameObject.layer = 12;
         state = StateOfEnemy.Friend;
         GetComponent<SphereCollider>().enabled = false;
         FindHome();
