@@ -23,9 +23,17 @@ public class WorldTreeScript : MonoBehaviour {
     public float LerpTimer;
     public float MaxLerpTime;
     private float perc;
+    public bool test;
 
     private void Update()
     {
+
+        if (test)
+        {
+            test = false;
+            AddLeaves1();
+        }
+
         GrowLeaves();
         ColourTree();
 

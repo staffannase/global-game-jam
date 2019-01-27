@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public enum StateOfEnemy {
-    Patrol,
-    Chase,
-    Idle
-}
+//public enum StateOfEnemy {
+//    Patrol,
+//    Chase,
+//    Idle
+//}
 
 public class FlamingoController : MonoBehaviour {
 
@@ -66,6 +66,12 @@ public class FlamingoController : MonoBehaviour {
         if (state == StateOfEnemy.Chase && other.transform == currentTarget) {
             Patrol ();
         }
+    }
+
+    public void MakeFriend()
+    {
+        gameObject.layer = 10;
+        state = StateOfEnemy.Idle;
     }
 
     void Chase (Transform target) {
