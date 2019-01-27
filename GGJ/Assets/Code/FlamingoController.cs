@@ -122,6 +122,7 @@ public class FlamingoController : MonoBehaviour
 
     private void MoveTowardsCurrentTarget(int relativeSpeed = 1)
     {
+        if (currentTarget!=null)
         transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * speed * relativeSpeed);
     }
 
@@ -147,21 +148,22 @@ public class FlamingoController : MonoBehaviour
             if (indexOfGoingHome == 0) {
                 indexOfGoingHome++;
                 currentTarget.position = pointsToGoHome[indexOfGoingHome];
+                FindObjectOfType<WorldcolourController>().RemoveMeFromList(gameObject);
             }
             else
             {
                 state = StateOfEnemy.Idle;
             }
         }
-
-
-
     }
 
     private void RotateTowardTarget()
     {
-        var targetRotation = Quaternion.LookRotation(currentTarget.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+        if (currentTarget != null)
+        {
+            var targetRotation = Quaternion.LookRotation(currentTarget.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+        }
     }
 
     private void TryToAttack()
@@ -177,6 +179,8 @@ public class FlamingoController : MonoBehaviour
 
     private bool IsDistanceToTargetIfEnough()
     {
+        if (currentTarget == null)
+            return false;
         return (transform.position - currentTarget.position).sqrMagnitude <= minDistance;
     }
 }
