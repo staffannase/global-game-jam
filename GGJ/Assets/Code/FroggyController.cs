@@ -8,6 +8,7 @@ public class FroggyController : MonoBehaviour
     [SerializeField] private float maxAwayFromSpawn = 5f;
     [SerializeField] private float maxJumpRange = 5f;
 
+
     private StateOfEnemy state = StateOfEnemy.Patrol;
 
     private Rigidbody body;
@@ -55,7 +56,31 @@ public class FroggyController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.transform.tag);
-        animator.SetTrigger("froggyNoNoNoJump");
+
+       if (collision.gameObject.CompareTag("Grape"))
+        {
+            MakeFriend();
+        } else
+        {
+            animator.SetTrigger("froggyNoNoNoJump");
+        }
+        
+    }
+
+
+    public void MakeFriend()
+    {
+        gameObject.layer = 10;
+        state = StateOfEnemy.Friend;
+        FindHome();
+    }
+
+    public void FindHome()
+    {
+
+        GameObject treeCentre = GameObject.FindGameObjectWithTag("ReturnSpawnPoint");
+        transform.position =  treeCentre.transform.position + new Vector3(5 + Random.value * 10, 2, 5 + Random.value * 10);
+        orgPos = transform.position;
     }
 
     void Update()
@@ -96,7 +121,7 @@ public class FroggyController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (state != StateOfEnemy.Chase && other.tag == "Player")
+        if (state != StateOfEnemy.Chase && other.CompareTag("Player"))
         {
             Chase(other.transform);
         }
