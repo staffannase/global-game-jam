@@ -14,7 +14,7 @@ public class ChaseTrigger : MonoBehaviour
     }
 
     void OnTriggerExit (Collider c) {
-        if (c.CompareTag ("Player")) {
+        if (c.CompareTag ("Player") && enemy.state != StateOfEnemy.Idle) {
             enemy.StopChase();
         }
     }
