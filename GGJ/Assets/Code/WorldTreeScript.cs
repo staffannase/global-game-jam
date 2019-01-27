@@ -14,10 +14,8 @@ public class WorldTreeScript : MonoBehaviour {
     public GameObject[] Leaves3;
     public GameObject[] Leaves4;
 
-    public List<GameObject> Leaves;
     public List<GameObject> LeavesToGrow;
     public GameObject Trunk;
-    public GameObject LeafPrefab;
     public Color DeadColourTrunk;
     public Color SickColourTrunk;
     public Color WoundedColourTrunk;
@@ -48,7 +46,6 @@ public class WorldTreeScript : MonoBehaviour {
 
         if (!Growing)
             LerpTimer = 0f;
-        
     }
 
     private void ColourTree()
@@ -172,7 +169,6 @@ public class WorldTreeScript : MonoBehaviour {
                     if (leaf.transform.localScale.sqrMagnitude >= Vector3.one.sqrMagnitude * 3f)
                     {
                         LeavesToGrow.Remove(leaf);
-                        Leaves.Add(leaf);
                         Growing = false;
                     }
                 }

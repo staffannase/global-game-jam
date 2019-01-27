@@ -148,6 +148,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   animator: {fileID: 95801569542621274}
+  correctAmmoName: ProjectileBanana
 --- !u!114 &114803788732173838
 MonoBehaviour:
   m_ObjectHideFlags: 1
