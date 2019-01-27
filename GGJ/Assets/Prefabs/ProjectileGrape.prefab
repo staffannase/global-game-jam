@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 135796238294286552}
   m_Layer: 11
   m_Name: ProjectileGrape
-  m_TagString: Untagged
+  m_TagString: Grape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
