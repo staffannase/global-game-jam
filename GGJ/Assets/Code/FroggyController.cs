@@ -108,6 +108,7 @@ public class FroggyController : MonoBehaviour
     public void FindHome()
     {
 
+        FindObjectOfType<WorldcolourController>().RemoveMeFromList(gameObject);
         GameObject treeCentre = GameObject.FindGameObjectWithTag("ReturnSpawnPoint");
         transform.position =  treeCentre.transform.position + new Vector3(5 + Random.value * 10, 2, 5 + Random.value * 10);
         orgPos = transform.position;

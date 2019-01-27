@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114979667906097580}
   m_Layer: 10
   m_Name: Frog
-  m_TagString: Untagged
+  m_TagString: Frog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 30
   maxAwayFromSpawn: 5
   maxJumpRange: 5
+  state: 0
 --- !u!212 &212220383149704994
 SpriteRenderer:
   m_ObjectHideFlags: 1

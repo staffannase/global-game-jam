@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
-    public enum ProjectileType { None, Peach, Grape}
+    public enum ProjectileType { None, Peach, Grape, Banana}
 
     private int ammoCount = 5;
     private ProjectileType currentType = ProjectileType.Peach;
