@@ -73,6 +73,8 @@ public class Pickup : MonoBehaviour
                 Inventory.addAmmo(InventoryController.ProjectileType.Grape);
             else if (tag == "Peach")
                 Inventory.addAmmo(InventoryController.ProjectileType.Peach);
+            else if (tag=="Banana")
+                Inventory.addAmmo(InventoryController.ProjectileType.Banana);
             Destroy(gameObject);
         }
 

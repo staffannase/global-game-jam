@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 135705305590269972}
   m_Layer: 11
   m_Name: ProjectileBanana
-  m_TagString: Untagged
+  m_TagString: Banana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
