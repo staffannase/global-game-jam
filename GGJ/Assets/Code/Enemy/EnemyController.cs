@@ -96,7 +96,11 @@ public class EnemyController : MonoBehaviour {
         if (coll.gameObject.name.Contains (correctAmmoName)) {
             //Debug.Log ("MakeFriend " + name);
             MakeFriend ();
-            agent.enabled = false;
+            if (agent.enabled)
+            {
+                agent.enabled = false;
+            }
+
             Destroy (coll.gameObject);
         }
     }
