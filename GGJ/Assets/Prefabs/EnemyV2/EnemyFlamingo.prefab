@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 136118174534832344}
   - component: {fileID: 195699324770696220}
   - component: {fileID: 114034218767558132}
+  - component: {fileID: 82739336786480340}
   m_Layer: 0
   m_Name: EnemyFlamingo
   m_TagString: Untagged
@@ -116,6 +117,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.3, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82739336786480340
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080625082966146}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95717382469497414
 Animator:
   serializedVersion: 3
@@ -147,7 +228,13 @@ MonoBehaviour:
   points:
   - {fileID: 0}
   - {fileID: 0}
+  state: 0
   animator: {fileID: 95717382469497414}
+  correctAmmoName: ProjectilePeach
+  regularSounds:
+  - {fileID: 8300000, guid: b4868dda033e90941837bf93ab04008c, type: 3}
+  - {fileID: 8300000, guid: b4d460720ef9ed24db465a41484c6163, type: 3}
+  - {fileID: 8300000, guid: b5caae90cfd4b0a4b9780d6b566395b7, type: 3}
 --- !u!114 &114062125408695290
 MonoBehaviour:
   m_ObjectHideFlags: 1
