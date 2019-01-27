@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OutOfBoundsScript : MonoBehaviour {
+public class OutOfBoundsScript : MonoBehaviour
+{
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Deathwater"))
-        {
-            //do game over stuff
-            SceneManager.LoadScene("Level");
-        }
+
+            if (col.gameObject.CompareTag("Deathwater"))
+            {
+                //do game over stuff
+                SceneManager.LoadScene("Level2");
+            }
+       
     }
 }

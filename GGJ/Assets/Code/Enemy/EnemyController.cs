@@ -22,6 +22,10 @@ public class EnemyController : MonoBehaviour {
     private float timeBetweenAttack = 2f;
 
     private GameObject targetToChase;
+    private Transform currentTarget;
+
+    private Vector3[] pointsToGoHome;
+    private int indexOfGoingHome = 0;
 
     public string correctAmmoName;
 
@@ -84,8 +88,44 @@ public class EnemyController : MonoBehaviour {
             case StateOfEnemy.Idle:
                 animator.SetBool ("Move", false);
                 break;
+            case StateOfEnemy.Friend:
+                animator.SetBool("Move", false);
+                FindnextHomeTarget();
+                MoveTowardsCurrentTarget(10);
+                break;
             default:
                 break;
+        }
+    }
+
+    public void FindHome()
+    {
+        agent.enabled = false;
+
+        state = StateOfEnemy.Friend;
+        GameObject go = new GameObject();
+        currentTarget = go.transform;
+        pointsToGoHome = new Vector3[2];
+        pointsToGoHome[0] = transform.position + (Vector3.up * 50);
+        var wt = GameObject.FindGameObjectWithTag("ReturnSpawnPoint");
+        pointsToGoHome[1] = wt.transform.position;// + new Vector3(5 + Random.value * 10, 0, 5 + Random.value * 10);
+        currentTarget.position = pointsToGoHome[0];
+    }
+
+    private void FindnextHomeTarget()
+    {
+        if (IsDistanceToTargetIfEnoughOld())
+        {
+            if (indexOfGoingHome == 0)
+            {
+                indexOfGoingHome++;
+                currentTarget.position = pointsToGoHome[indexOfGoingHome];
+                FindObjectOfType<WorldcolourController>().RemoveMeFromList(gameObject);
+            }
+            else
+            {
+                state = StateOfEnemy.Idle;
+            }
         }
     }
 
@@ -123,6 +163,7 @@ public class EnemyController : MonoBehaviour {
         gameObject.layer = 12;
         GetComponentInChildren<SpriteRenderer>().gameObject.layer = 12;
         state = StateOfEnemy.Friend;
+        FindHome();
     }
 
     void TryToAttack () {
@@ -136,5 +177,18 @@ public class EnemyController : MonoBehaviour {
 
     bool IsDistanceToTargetIfEnough () {
         return agent.remainingDistance < minDistance;
+    }
+
+    private bool IsDistanceToTargetIfEnoughOld()
+    {
+        if (currentTarget == null)
+            return false;
+        return (transform.position - currentTarget.position).sqrMagnitude <= minDistance;
+    }
+
+    private void MoveTowardsCurrentTarget(int relativeSpeed = 1)
+    {
+        if (currentTarget != null)
+            transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, Time.deltaTime  * relativeSpeed);
     }
 }
