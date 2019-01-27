@@ -9,6 +9,11 @@ public class HealthComponent : MonoBehaviour
 
     [SerializeField]
     private int hp;
+    private int maxHP;
+
+    private void Start() {
+        maxHP = hp;
+    }
 
     public bool IsDead { get; set; }
 
@@ -27,5 +32,9 @@ public class HealthComponent : MonoBehaviour
         IsDead = hp == 0;
         if(IsDead)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetHPFull() {
+        hp = maxHP;
     }
 }
