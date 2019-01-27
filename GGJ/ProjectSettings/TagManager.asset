@@ -15,6 +15,7 @@ TagManager:
   - ReturnSpawnPoint
   - Frog
   - Egg
+  - Banana
   layers:
   - Default
   - TransparentFX

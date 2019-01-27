@@ -17,6 +17,13 @@ public class ColorWorldController : MonoBehaviour
             volume.weight = Mathf.Lerp(volume.weight, grayTarget, Time.deltaTime * speed);
             shouldChangeColor = Mathf.Abs(volume.weight - grayTarget) <= error;
         }
+
+        // Cheat
+        if (Input.GetKey(KeyCode.F1) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.B))
+        {
+            grayTarget = 0f;
+            shouldChangeColor = true;
+        }
     }
 
     public void ChangeColor(float subtractGreyness)
