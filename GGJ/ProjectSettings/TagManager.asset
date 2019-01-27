@@ -4,17 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - pickedupparticles
   - Water
   - Deathwater
   - Fruit
   - Hand
-  - fruit
-  - player
-  - hand
   - Undefined
   - Grape
   - Peach
+  - Worldtree
+  - ReturnSpawnPoint
   layers:
   - Default
   - TransparentFX

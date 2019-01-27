@@ -34,7 +34,7 @@ public class PeachSpawner : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Peach")
+        if (other.gameObject.CompareTag("Peach"))
         {
             SpawnTimer = Time.fixedTime + 10;
         }
