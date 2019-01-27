@@ -102,7 +102,7 @@ public class ChickenController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Deathwater"))
+        if (collision.gameObject.CompareTag("Banana") || collision.gameObject.CompareTag("Deathwater"))
         {
             MakeFriend();
         }
