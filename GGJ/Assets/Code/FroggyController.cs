@@ -85,7 +85,7 @@ public class FroggyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Grape"))
+        if (collision.gameObject.CompareTag("Grape") || collision.gameObject.CompareTag("Deathwater"))
         {
             MakeFriend();
         } else if (collision.gameObject.CompareTag("Player")) {
@@ -100,7 +100,7 @@ public class FroggyController : MonoBehaviour
 
     public void MakeFriend()
     {
-        gameObject.layer = 10;
+        gameObject.layer = 12;
         state = StateOfEnemy.Friend;
         FindHome();
     }
