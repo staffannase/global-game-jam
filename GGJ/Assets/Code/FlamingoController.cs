@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public enum StateOfEnemy {
-    Patrol,
-    Chase,
-    Idle
-}
+//public enum StateOfEnemy {
+//    Patrol,
+//    Chase,
+//    Idle
+//}
 
 public class FlamingoController : MonoBehaviour {
 
