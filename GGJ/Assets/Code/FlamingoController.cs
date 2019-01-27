@@ -69,7 +69,7 @@ public class FlamingoController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (state != StateOfEnemy.Chase && other.tag == "Player")
+        if (state != StateOfEnemy.Chase && other.CompareTag("Player"))
         {
             Chase(other.transform);
         }
