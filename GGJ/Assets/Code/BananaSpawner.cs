@@ -36,7 +36,7 @@ public class BananaSpawner : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Banana"))
         {
-            SpawnTimer = Time.fixedTime + 10;
+            SpawnTimer = Time.fixedTime + 13;
         }
     }
 }
