@@ -12,10 +12,11 @@ public class WorldcolourController : MonoBehaviour {
     public WorldTreeScript WorldTree;
 
     private bool GameWon;
+    private ColorWorldController wc;
 
     void Start ()
     {
-		
+        wc = FindObjectOfType<ColorWorldController>();
 	}
 	
 	void Update ()
@@ -30,21 +31,30 @@ public class WorldcolourController : MonoBehaviour {
     {
         if(WayOneEnemies.Count < 1)
         {
-            WorldTree.finishedLevel = 1;
+            WorldTree.finishedLevel++;
+            wc.ChangeColor(0.2f);
         }
         else if (WayTwoEnemies.Count < 1)
         {
-            WorldTree.finishedLevel = 2;
+            WorldTree.finishedLevel++;
+            wc.ChangeColor(0.2f);
         }
         else if (WayThreeEnemies.Count < 1)
         {
-            WorldTree.finishedLevel = 3;
+            WorldTree.finishedLevel++;
+            wc.ChangeColor(0.2f);
         }
         else if (WayFourEnemies.Count < 1)
         {
-            WorldTree.finishedLevel = 4;
+            WorldTree.finishedLevel ++;
+            wc.ChangeColor(0.2f);
         }
         else if (WayFiveEnemies.Count < 1)
+        {
+            WorldTree.finishedLevel++;
+            wc.ChangeColor(0.2f);
+        }
+        if (WorldTree.finishedLevel==5)
         {
             GameWon = true;
         }

@@ -9,8 +9,6 @@ public class FlamingoController : MonoBehaviour
 
     [SerializeField] private Vector3[] pointsToGoHome;
 
-    private Transform goHomeTaget;
-
     private StateOfEnemy state = StateOfEnemy.Patrol;
 
     private int indexOfPatroling = 0;

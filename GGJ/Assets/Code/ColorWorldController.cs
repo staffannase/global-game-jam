@@ -19,9 +19,9 @@ public class ColorWorldController : MonoBehaviour
         }
     }
 
-    public void ChangeColor(float newGrayTarget)
+    public void ChangeColor(float subtractGreyness)
     {
-        grayTarget = newGrayTarget;
+        grayTarget -= subtractGreyness;
         shouldChangeColor = true;
     }
 }
