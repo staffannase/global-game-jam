@@ -13,6 +13,9 @@ TagManager:
   - Peach
   - Worldtree
   - ReturnSpawnPoint
+  - Frog
+  - Egg
+  - Banana
   layers:
   - Default
   - TransparentFX
