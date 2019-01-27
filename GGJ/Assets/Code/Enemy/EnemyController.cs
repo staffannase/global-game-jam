@@ -5,7 +5,8 @@ using UnityEngine.AI;
 public enum StateOfEnemy {
     Patrol,
     Chase,
-    Idle
+    Idle,
+    Friend
 }
 
 public class EnemyController : MonoBehaviour {
