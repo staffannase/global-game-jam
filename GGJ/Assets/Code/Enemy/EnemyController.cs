@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour {
     private int destPoint = 0;
     private NavMeshAgent agent;
 
-    private StateOfEnemy state = StateOfEnemy.Patrol;
+    public StateOfEnemy state = StateOfEnemy.Patrol;
     public Animator animator;
     private float minDistance = 2f;
 
@@ -24,8 +24,15 @@ public class EnemyController : MonoBehaviour {
 
     private GameObject targetToChase;
 
+    public string correctAmmoName;
+
+    public AudioClip[] regularSounds;
+
+    private AudioSource audioSource;
+
     void Start () {
         agent = GetComponent<NavMeshAgent> ();
+        audioSource = GetComponent<AudioSource>();
 
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
@@ -54,6 +61,12 @@ public class EnemyController : MonoBehaviour {
 
 
     void Update () {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.clip = regularSounds[Random.Range(0,regularSounds.Length)];
+            audioSource.Play();
+        }
+
         switch (state) {
             case StateOfEnemy.Patrol:
                 if (!agent.pathPending && IsDistanceToTargetIfEnough())
@@ -77,6 +90,17 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter (Collision coll)
+    {
+        Debug.Log(coll.transform.name);
+        if (coll.gameObject.name.Contains (correctAmmoName)) {
+            Debug.Log ("MakeFriend " + name);
+            MakeFriend ();
+            agent.enabled = false;
+            Destroy (coll.gameObject);
+        }
+    }
+
     public void Chase(GameObject obj)
     {
         targetToChase = obj;
@@ -87,6 +111,12 @@ public class EnemyController : MonoBehaviour {
     public void StopChase () {
         state = StateOfEnemy.Patrol;
         GotoNextPoint ();
+    }
+
+    public void MakeFriend () {
+        gameObject.layer = 12;
+        GetComponentInChildren<SpriteRenderer>().gameObject.layer = 12;
+        state = StateOfEnemy.Idle;
     }
 
     void TryToAttack () {
