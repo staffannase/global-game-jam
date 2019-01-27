@@ -34,7 +34,7 @@ public class GrapeSpawner1 : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Grape")
+        if (other.gameObject.CompareTag("Grape"))
         {
             SpawnTimer = Time.fixedTime + 10;
         }

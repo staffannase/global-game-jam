@@ -19,7 +19,7 @@ public class CameraTreeView : MonoBehaviour {
 	}
 
     private void OnTriggerStay( Collider other ) {
-        if ( other.gameObject.tag == "Player" ) {
+        if ( other.gameObject.CompareTag("Player")) {
             //other.transform.LookAt( LookAtPoint,  Vector3.up );
 
             Vector3 lTargetDir = LookAtPoint.position - other.transform.position;
