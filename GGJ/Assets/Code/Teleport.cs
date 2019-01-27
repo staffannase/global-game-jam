@@ -19,6 +19,7 @@ public class Teleport : MonoBehaviour {
     private void OnTriggerEnter( Collider other ) {
         if(other.tag == "Player") {
             other.transform.position = portHere.position;
+            other.gameObject.GetComponent<HealthComponent>().SetHPFull();
         }
     }
 
