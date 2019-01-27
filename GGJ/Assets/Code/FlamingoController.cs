@@ -68,6 +68,12 @@ public class FlamingoController : MonoBehaviour {
         }
     }
 
+    public void MakeFriend()
+    {
+        gameObject.layer = 10;
+        state = StateOfEnemy.Idle;
+    }
+
     void Chase (Transform target) {
         state = StateOfEnemy.Chase;
         currentTarget = target;

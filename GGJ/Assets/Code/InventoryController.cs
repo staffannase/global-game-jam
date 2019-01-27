@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour {
     public enum ProjectileType { None, Peach, Grape}
 
-    private int ammoCount = 0;
+    private int ammoCount = 5;
     private ProjectileType currentType = ProjectileType.Peach;
 
     public ProjectileType getAmmoType()
@@ -18,7 +18,7 @@ public class InventoryController : MonoBehaviour {
         return ammoCount;
     }
 
-    public bool canAttack()
+    public bool hasAmmo()
     {
         return currentType != ProjectileType.None && ammoCount > 0;
     }
