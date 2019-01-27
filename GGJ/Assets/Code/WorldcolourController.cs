@@ -20,8 +20,10 @@ public class WorldcolourController : MonoBehaviour {
 	
 	void Update ()
     {
-
-
+        if (GameWon)
+        {
+            //GameWin
+        }
     }
 
     private void CheckForFinishedWays()
