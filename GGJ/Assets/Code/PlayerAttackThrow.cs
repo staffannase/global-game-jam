@@ -8,6 +8,7 @@ public class PlayerAttackThrow : MonoBehaviour
     public GameObject peach;
     public GameObject grape;
     public GameObject grapeFragment;
+    public GameObject banana;
 
     private InventoryController inventory;
     private PlayerMovement movement;
@@ -43,6 +44,9 @@ public class PlayerAttackThrow : MonoBehaviour
                 case InventoryController.ProjectileType.Peach:
                     StartCoroutine("peachAttack");
                     break;
+                case InventoryController.ProjectileType.Banana:
+                    StartCoroutine("bananaAttack");
+                    break;
                 default:
                     ongoingAttack = false;
                     break;
@@ -68,6 +72,19 @@ public class PlayerAttackThrow : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         var current = Instantiate(peach, ThrowingPoint.position, Quaternion.identity);
+        var throwingAttack = current.GetComponent<ThrowingAttack>();
+        Vector3 aimVector = FindObjectOfType<CameraOrbit>().transform.position - Camera.main.transform.position;
+        Vector3 aimingModifier = new Vector3(0, 1.5f, 0);
+        throwingAttack.perform(3200, aimVector + aimingModifier);
+        yield return new WaitForSeconds(1.3f);
+        ongoingAttack = false;
+
+    }
+
+    IEnumerator bananaAttack()
+    {
+        yield return new WaitForSeconds(0.4f);
+        var current = Instantiate(banana, ThrowingPoint.position, Quaternion.identity);
         var throwingAttack = current.GetComponent<ThrowingAttack>();
         Vector3 aimVector = FindObjectOfType<CameraOrbit>().transform.position - Camera.main.transform.position;
         Vector3 aimingModifier = new Vector3(0, 1.5f, 0);
