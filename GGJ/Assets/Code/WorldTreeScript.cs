@@ -21,7 +21,7 @@ public class WorldTreeScript : MonoBehaviour {
     public Color WoundedColourTrunk;
     public Color AlmostHealthyColourTrunk;
     public Color HealthyColourTrunk;
-    private bool Growing;
+    public bool Growing;
     public int finishedLevel = 0;
     public Renderer rend;
     public float LerpTimer;
