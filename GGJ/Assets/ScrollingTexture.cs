@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollingTexture : MonoBehaviour
 {
-
+    [SerializeField] private float _speed = 1;
 	private Material _material;
 	
 	// Use this for initialization
@@ -15,6 +15,6 @@ public class ScrollingTexture : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		_material.SetTextureOffset("_MainTex", _material.GetTextureOffset("_MainTex") + Vector2.left*Time.deltaTime);
+		_material.SetTextureOffset("_MainTex", _material.GetTextureOffset("_MainTex") + Vector2.left*Time.deltaTime*_speed);
 	}
 }
