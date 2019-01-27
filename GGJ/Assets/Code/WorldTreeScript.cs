@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class WorldTreeScript : MonoBehaviour {
 
-    public Transform[] LeafPlaces1;
-    public Transform[] LeafPlaces2;
-    public Transform[] LeafPlaces3;
-    public Transform[] LeafPlaces4;
+    //public Transform[] LeafPlaces1;
+    //public Transform[] LeafPlaces2;
+    //public Transform[] LeafPlaces3;
+    //public Transform[] LeafPlaces4;
+
+    public GameObject[] Leaves1;
+    public GameObject[] Leaves2;
+    public GameObject[] Leaves3;
+    public GameObject[] Leaves4;
+
     public List<GameObject> Leaves;
     public List<GameObject> LeavesToGrow;
     public GameObject Trunk;
@@ -18,7 +24,7 @@ public class WorldTreeScript : MonoBehaviour {
     public Color AlmostHealthyColourTrunk;
     public Color HealthyColourTrunk;
     private bool Growing;
-    private int finishedLevel = 0;
+    public int finishedLevel = 0;
     public Renderer rend;
     public float LerpTimer;
     public float MaxLerpTime;
@@ -27,13 +33,6 @@ public class WorldTreeScript : MonoBehaviour {
 
     private void Update()
     {
-
-        if (test)
-        {
-            test = false;
-            AddLeaves1();
-        }
-
         GrowLeaves();
         ColourTree();
 
@@ -54,70 +53,109 @@ public class WorldTreeScript : MonoBehaviour {
 
     private void ColourTree()
     {
-        //if (Growing)
-        //{
-            if (finishedLevel == 1 && rend.material.color != SickColourTrunk)
-            {
-                rend.material.color = Color.Lerp(DeadColourTrunk, SickColourTrunk, perc);
-            }
-            if (finishedLevel == 2 && rend.material.color != WoundedColourTrunk)
-            {
-                rend.material.color = Color.Lerp(SickColourTrunk, WoundedColourTrunk, perc);
-            }
-            if (finishedLevel == 3 && rend.material.color != AlmostHealthyColourTrunk)
-            {
-                rend.material.color = Color.Lerp(WoundedColourTrunk, AlmostHealthyColourTrunk, perc);
-            }
-            if (finishedLevel == 4 && rend.material.color != HealthyColourTrunk)
-            {
-                rend.material.color = Color.Lerp(AlmostHealthyColourTrunk, HealthyColourTrunk, perc);
-            }
-        //}
-    }
-
-    public void AddLeaves1()
-    {
-        for (int i = 0; i < LeafPlaces1.Length; i++)
+        if (finishedLevel == 1 /*&& rend.material.color != SickColourTrunk*/)
         {
-            GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces1[i].position, Quaternion.identity);
-            LeavesToGrow.Add(Leaf);
-            finishedLevel = 1;
-            Growing = true;
+            rend.material.color = Color.Lerp(DeadColourTrunk, SickColourTrunk, perc);
+        }
+        else if (finishedLevel == 2 /*&& rend.material.color != WoundedColourTrunk*/)
+        {
+            rend.material.color = Color.Lerp(SickColourTrunk, WoundedColourTrunk, perc);
+        }
+        else if (finishedLevel == 3 /*&& rend.material.color != AlmostHealthyColourTrun*/)
+        {
+            rend.material.color = Color.Lerp(WoundedColourTrunk, AlmostHealthyColourTrunk, perc);
+        }
+        else if (finishedLevel == 4 /*&& rend.material.color != HealthyColourTrunk*/)
+        {
+            rend.material.color = Color.Lerp(AlmostHealthyColourTrunk, HealthyColourTrunk, perc);
         }
     }
 
-    public void AddLeaves2()
+    public void AwakenLeaves()
     {
-        for (int i = 0; i < LeafPlaces2.Length; i++)
+        if (finishedLevel == 1)
         {
-            GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces2[i].position, Quaternion.identity);
-            LeavesToGrow.Add(Leaf);
-            finishedLevel = 2;
-            Growing = true;
+            for (int i = 0; i < Leaves1.Length; i++)
+            {
+                GameObject leaf = Leaves1[i];
+                leaf.SetActive(true);
+                LeavesToGrow.Add(leaf);
+            }
         }
+        else if (finishedLevel == 2)
+        {
+            for (int i = 0; i < Leaves2.Length; i++)
+            {
+                GameObject leaf = Leaves2[i];
+                leaf.SetActive(true);
+                LeavesToGrow.Add(leaf);
+            }
+        }
+        else if (finishedLevel == 3)
+        {
+            for (int i = 0; i < Leaves3.Length; i++)
+            {
+                GameObject leaf = Leaves3[i];
+                leaf.SetActive(true);
+                LeavesToGrow.Add(leaf);
+            }
+        }
+        else if (finishedLevel == 4)
+        {
+            for (int i = 0; i < Leaves4.Length; i++)
+            {
+                GameObject leaf = Leaves4[i];
+                leaf.SetActive(true);
+                LeavesToGrow.Add(leaf);
+            }
+        }
+
+        Growing = true;
     }
 
-    public void AddLeaves3()
-    {
-        for (int i = 0; i < LeafPlaces3.Length; i++)
-        {
-            GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces3[i].position, Quaternion.identity);
-            LeavesToGrow.Add(Leaf);
-            finishedLevel = 3;
-            Growing = true;
-        }
-    }
+    //public void AddLeaves1()
+    //{
+    //    for (int i = 0; i < LeafPlaces1.Length; i++)
+    //    {
+    //        GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces1[i].position, Quaternion.identity);
+    //        LeavesToGrow.Add(Leaf);
+    //        finishedLevel = 1;
+    //        Growing = true;
+    //    }
+    //}
 
-    public void AddLeaves4()
-    {
-        for (int i = 0; i < LeafPlaces4.Length; i++)
-        {
-            GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces4[i].position, Quaternion.identity);
-            LeavesToGrow.Add(Leaf);
-            finishedLevel = 4;
-            Growing = true;
-        }
-    }
+    //public void AddLeaves2()
+    //{
+    //    for (int i = 0; i < LeafPlaces2.Length; i++)
+    //    {
+    //        GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces2[i].position, Quaternion.identity);
+    //        LeavesToGrow.Add(Leaf);
+    //        finishedLevel = 2;
+    //        Growing = true;
+    //    }
+    //}
+
+    //public void AddLeaves3()
+    //{
+    //    for (int i = 0; i < LeafPlaces3.Length; i++)
+    //    {
+    //        GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces3[i].position, Quaternion.identity);
+    //        LeavesToGrow.Add(Leaf);
+    //        finishedLevel = 3;
+    //        Growing = true;
+    //    }
+    //}
+
+    //public void AddLeaves4()
+    //{
+    //    for (int i = 0; i < LeafPlaces4.Length; i++)
+    //    {
+    //        GameObject Leaf = Instantiate(LeafPrefab, LeafPlaces4[i].position, Quaternion.identity);
+    //        LeavesToGrow.Add(Leaf);
+    //        finishedLevel = 4;
+    //        Growing = true;
+    //    }
+    //}
 
     public void GrowLeaves()
     {
