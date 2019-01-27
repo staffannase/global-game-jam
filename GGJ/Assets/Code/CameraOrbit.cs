@@ -31,6 +31,9 @@ public class CameraOrbit : MonoBehaviour {
         x = angles.y;
         y = angles.x;
         currentDistance = distance;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void LateUpdate() {
@@ -45,6 +48,11 @@ public class CameraOrbit : MonoBehaviour {
 
             transform.localRotation = rotation;
 
+        }
+
+        if(Input.GetKeyDown(KeyCode.F3)) {
+            Cursor.lockState = Cursor.visible ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !Cursor.visible;
         }
     }
 
