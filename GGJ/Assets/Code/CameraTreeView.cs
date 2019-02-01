@@ -7,7 +7,6 @@ public class CameraTreeView : MonoBehaviour {
     Transform LookAtPoint;
     float speed = 100.666f;
 
-
 	// Use this for initialization
 	void Start () {
         LookAtPoint = transform.GetChild( 0 );
@@ -26,5 +25,10 @@ public class CameraTreeView : MonoBehaviour {
             lTargetDir.y = 0.0f;
             other.transform.rotation = Quaternion.RotateTowards( other.transform.rotation, Quaternion.LookRotation( lTargetDir ), Time.deltaTime * speed );
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }

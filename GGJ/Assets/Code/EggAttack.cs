@@ -24,10 +24,7 @@ public class EggAttack : MonoBehaviour {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.SendMessage("GetDamage");
         }
-         
     }
-    
-
 }
 
 /*

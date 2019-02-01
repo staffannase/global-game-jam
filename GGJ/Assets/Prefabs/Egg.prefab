@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 135095112637938050}
   - component: {fileID: 212872474008339864}
   - component: {fileID: 95219023578888954}
+  - component: {fileID: 114068211043798966}
   m_Layer: 10
   m_Name: Egg
   m_TagString: Egg
@@ -75,6 +76,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114068211043798966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1599060008454284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e85f2b4c09c39479c06eff628183d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135095112637938050
 SphereCollider:
   m_ObjectHideFlags: 1

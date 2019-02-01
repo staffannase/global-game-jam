@@ -53,13 +53,11 @@ public class FroggyController : MonoBehaviour
     Vector3 getChaseJump()
     {
         Vector3 target = player.transform.position - transform.position;
-        
         return new Vector3(target.x, transform.position.y + 10, target.z) * speed * 1.5f;
     }
 
     IEnumerator jump()
     {
-
         Debug.Log(state);
         if (showWarFace)
         {
@@ -78,6 +76,10 @@ public class FroggyController : MonoBehaviour
                 body.AddForce(getChaseJump());
                 yield return new WaitForSeconds(Random.Range(3f, 4f));
             }
+            else if (state == StateOfEnemy.Friend)
+            {
+                yield break;
+            }
         }
         showWarFace = false;
         ongoingJump = false;
@@ -88,7 +90,7 @@ public class FroggyController : MonoBehaviour
         if (collision.gameObject.CompareTag("Grape") || collision.gameObject.CompareTag("Deathwater"))
         {
             MakeFriend();
-        } else if (collision.gameObject.CompareTag("Player")) {
+        } else if (collision.gameObject.CompareTag("Player") && state != StateOfEnemy.Friend) {
             player.SendMessage("GetDamage");
         } else
         {
@@ -96,7 +98,6 @@ public class FroggyController : MonoBehaviour
         }
         
     }
-
 
     public void MakeFriend()
     {
@@ -107,7 +108,6 @@ public class FroggyController : MonoBehaviour
 
     public void FindHome()
     {
-
         FindObjectOfType<WorldcolourController>().RemoveMeFromList(gameObject);
         GameObject treeCentre = GameObject.FindGameObjectWithTag("ReturnSpawnPoint");
         transform.position =  treeCentre.transform.position + new Vector3(5 + Random.value * 10, 2, 5 + Random.value * 10);
@@ -122,6 +122,9 @@ public class FroggyController : MonoBehaviour
         }
         switch (state)
         {
+            case StateOfEnemy.Friend:
+                ongoingJump = false;
+                break;
             case StateOfEnemy.Patrol:
                 ongoingJump = true;
                 StartCoroutine("jump");
@@ -141,5 +144,4 @@ public class FroggyController : MonoBehaviour
         animator.SetTrigger("froggyFullFrontalAllOutAttack");
         state = StateOfEnemy.Chase;
     }
-
 }

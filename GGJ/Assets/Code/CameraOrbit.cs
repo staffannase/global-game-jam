@@ -11,11 +11,11 @@ public class CameraOrbit : MonoBehaviour {
     float xSpeed = 120.0f;
     float ySpeed = 120.0f;
 
-    float yMinLimit = -20f;
-    float yMaxLimit = 20f;
+    float yMinLimit = -35f;
+    float yMaxLimit = 35f;
 
-    float xMinLimit = -25f;
-    float xMaxLimit = 25f;
+    float xMinLimit = -40f;
+    float xMaxLimit = 40f;
 
 
     float distanceMin = 0.5f; 

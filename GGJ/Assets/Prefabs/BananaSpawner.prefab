@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee9389e44cb3741ba2e8721b301285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Banana: {fileID: 1820169872748284, guid: 81b9530093205e547865144b511cc4c5, type: 2}
+  Banana: {fileID: 1747847573624360, guid: 2e2a40587c43a6e4f9fe7a6923dfc694, type: 2}
 --- !u!135 &135184239861354282
 SphereCollider:
   m_ObjectHideFlags: 1

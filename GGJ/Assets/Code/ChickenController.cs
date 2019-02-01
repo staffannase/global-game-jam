@@ -39,7 +39,6 @@ public class ChickenController : MonoBehaviour {
         currentMoveTo = new Vector3(orgPos.x + Random.Range(-maxAwayFromSpawn, maxAwayFromSpawn), orgPos.y, orgPos.z + Random.Range(-maxAwayFromSpawn, maxAwayFromSpawn));
         yield return new WaitForSeconds(4);
         currentMoveTo = Vector3.zero;
-        
     }
     
     void doTheChickenShuffle()
@@ -54,6 +53,13 @@ public class ChickenController : MonoBehaviour {
 
     IEnumerator attackPlayer()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > 30f)
+        {
+            yield break;
+        }
+
         Debug.Log("Attacxking");
         midAttack = true;
         animator.SetTrigger("chickenAttacking");
@@ -62,7 +68,7 @@ public class ChickenController : MonoBehaviour {
         var current = Instantiate(egg, ThrowingPoint.position, Quaternion.identity);
         var EggAttack = current.GetComponent<EggAttack>();
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        
         Vector3 aimAt = player.transform.position - transform.position;
         Vector3 aimingModifier = new Vector3(0, 1.5f, 0);
         EggAttack.perform(3200, aimAt + aimingModifier);

@@ -51,7 +51,6 @@ public class PlayerAttackThrow : MonoBehaviour
                     ongoingAttack = false;
                     break;
             }
-            
         }
     }
 
@@ -65,7 +64,6 @@ public class PlayerAttackThrow : MonoBehaviour
         throwingAttack.perform(500, aimVector + aimingModifier, 20, grapeFragment);
         yield return new WaitForSeconds(1.3f);
         ongoingAttack = false;
-
     }
 
     IEnumerator peachAttack()
@@ -78,7 +76,6 @@ public class PlayerAttackThrow : MonoBehaviour
         throwingAttack.perform(3200, aimVector + aimingModifier);
         yield return new WaitForSeconds(1.3f);
         ongoingAttack = false;
-
     }
 
     IEnumerator bananaAttack()
@@ -91,6 +88,5 @@ public class PlayerAttackThrow : MonoBehaviour
         throwingAttack.perform(3200, aimVector + aimingModifier);
         yield return new WaitForSeconds(1.3f);
         ongoingAttack = false;
-
     }
 }

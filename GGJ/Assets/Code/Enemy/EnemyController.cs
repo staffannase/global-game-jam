@@ -108,7 +108,7 @@ public class EnemyController : MonoBehaviour {
         pointsToGoHome = new Vector3[2];
         pointsToGoHome[0] = transform.position + (Vector3.up * 50);
         var wt = GameObject.FindGameObjectWithTag("ReturnSpawnPoint");
-        pointsToGoHome[1] = wt.transform.position;// + new Vector3(5 + Random.value * 10, 0, 5 + Random.value * 10);
+        pointsToGoHome[1] = wt.transform.position + new Vector3(5 + Random.value * 10, 0, 5 + Random.value * 10);
         currentTarget.position = pointsToGoHome[0];
     }
 
@@ -124,7 +124,7 @@ public class EnemyController : MonoBehaviour {
             }
             else
             {
-                state = StateOfEnemy.Idle;
+                state = StateOfEnemy.Friend;
             }
         }
     }

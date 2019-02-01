@@ -13,7 +13,7 @@ public class FroggyAlertZoneScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (parent.state != StateOfEnemy.Chase && other.CompareTag("Player"))
+        if (parent.state == StateOfEnemy.Patrol && other.CompareTag("Player"))
         {
             parent.Chase();
         }
